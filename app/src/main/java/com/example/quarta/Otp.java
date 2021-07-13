@@ -232,7 +232,7 @@ public class Otp extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK)
-            Toast.makeText(getApplicationContext(), "back press",
+            Toast.makeText(getApplicationContext(), "Please enter the OTP to continue",
                     Toast.LENGTH_LONG).show();
 
         return false;

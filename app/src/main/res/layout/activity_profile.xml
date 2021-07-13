@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeDashBoard">
-
+    tools:context=".Profile">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="167dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_nav"
         android:layout_alignParentStart="true"
@@ -16,9 +15,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="131dp"
         android:layout_marginTop="329dp"
-        android:layout_marginEnd="146dp"
+        android:layout_marginEnd="113dp"
         android:layout_marginBottom="280dp"
-        android:text="Home"
+        android:text="Profile"
         android:textSize="50sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,5 +30,4 @@
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"
         />
-
 </RelativeLayout>
