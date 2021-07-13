@@ -188,6 +188,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppinsmedium"
             android:text="Resend Code"
-            android:textColor="@color/green" />
+            android:textColor="@color/green"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
