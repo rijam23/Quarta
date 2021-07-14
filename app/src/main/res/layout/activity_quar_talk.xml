@@ -4,22 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuarTalk">
+    tools:context=".QuarTalk"
+    >
 
 
-    <TextView
-        android:layout_width="188dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_nav"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="329dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginBottom="280dp"
-        android:text="Quartalk"
-        android:textSize="50sp" />
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
