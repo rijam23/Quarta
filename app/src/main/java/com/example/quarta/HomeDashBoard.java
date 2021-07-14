@@ -1,14 +1,23 @@
 package com.example.quarta;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import javax.sql.RowSetWriter;
 
 public class HomeDashBoard extends AppCompatActivity {
 
@@ -35,6 +44,7 @@ public class HomeDashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_dash_board);
+
 
 
         //Initialize And Assign Variable
@@ -65,4 +75,17 @@ public class HomeDashBoard extends AppCompatActivity {
         });
 
     }
+////Transparent Status Bar
+    private static void setWindowsFlag(Activity activity, final  int Bits, Boolean on)
+    {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams Winparams = win.getAttributes();
+        if (on){
+            Winparams.flags |=Bits;
+        } else {
+            Winparams.flags &= ~Bits;
+        }
+        win.setAttributes(Winparams);
+    }
+    ////Transparent Status Bar
 }

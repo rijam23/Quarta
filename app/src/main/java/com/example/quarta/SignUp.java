@@ -3,9 +3,14 @@ package com.example.quarta;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -42,6 +47,8 @@ public class SignUp extends AppCompatActivity {
         passWord = findViewById(R.id.inputPassword);
 
         signupbtn = findViewById(R.id.signinbuttonlogin);
+
+
 
 
 
@@ -163,4 +170,6 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    ////Transparent Status Bar
 }

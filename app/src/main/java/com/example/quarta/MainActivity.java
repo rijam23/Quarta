@@ -1,10 +1,15 @@
 package com.example.quarta;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +28,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     Button signin_button;
     TextView textsignup;
@@ -38,6 +43,8 @@ public class MainActivity extends AppCompatActivity  {
         textsignup = findViewById(R.id.signupactbutton);
         emailNum = findViewById(R.id.loginmobiletext);
         password = findViewById(R.id.loginpasstext);
+
+
         textsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     RequestBody requestBody = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
-                            .addFormDataPart("action","login")
+                            .addFormDataPart("action", "login")
                             .addFormDataPart("email", signInEmailNum)
                             .addFormDataPart("password", signInPassword)
                             .build();
@@ -74,39 +81,40 @@ public class MainActivity extends AppCompatActivity  {
                         public void onFailure(Call call, IOException e) {
                             Log.w("failure Response", e);
                         }
+
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-                            try{
-                            String responseText = response.body().string();
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    if (responseText.equals("Login Success")) {
-                                        Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), HomeDashBoard.class);
-                                        startActivity(intent);
-                                        //storing
-                                        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-                                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                                        myEdit.putString("email", signInEmailNum);
-                                        myEdit.apply();
-                                    } else {
-                                        Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                            try {
+                                String responseText = response.body().string();
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        if (responseText.equals("Login Success")) {
+                                            Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), HomeDashBoard.class);
+                                            startActivity(intent);
+                                            //storing
+                                            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                                            myEdit.putString("email", signInEmailNum);
+                                            myEdit.apply();
+                                        } else {
+                                            Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
-                        }
-                        catch(NullPointerException e) {
-                            Log.e("Error",String.valueOf(e));
-                        }
+                                });
+                            } catch (NullPointerException e) {
+                                Log.e("Error", String.valueOf(e));
+                            }
 
                         }
                     });
-                } catch(RuntimeException e) {
+                } catch (RuntimeException e) {
                     Log.e("Error", String.valueOf(e));
                 }
             }
         });
     }
+
     public void postRequest(String signInEmailNum, String signInPassword) throws IOException {
 
 

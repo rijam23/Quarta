@@ -3,12 +3,17 @@ package com.example.quarta;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -33,6 +38,8 @@ public class Otp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
+
+
         TextView textView = findViewById(R.id.resendcodebutton);
 
         inputCode1 = findViewById(R.id.inputcode1);
@@ -238,4 +245,5 @@ public class Otp extends AppCompatActivity {
         return false;
         // Disable back button..............
     }
+
 }
