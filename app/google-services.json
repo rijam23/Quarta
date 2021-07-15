@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392400053244",
+    "project_id": "my-new-proj-b212e",
+    "storage_bucket": "my-new-proj-b212e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392400053244:android:3cf92f3f4521ed600d0879",
+        "android_client_info": {
+          "package_name": "com.example.quarta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392400053244-ei38vme5pt2usdm63hga7h2hc1c9200s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsfrrVZ5JgxXf4HKiOvpYXXirijHbs1yU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392400053244-ei38vme5pt2usdm63hga7h2hc1c9200s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
