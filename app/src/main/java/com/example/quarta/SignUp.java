@@ -46,32 +46,12 @@ public class SignUp extends AppCompatActivity {
         emailNum = findViewById(R.id.inputmobile);
         passWord = findViewById(R.id.inputPassword);
 
-        signupbtn = findViewById(R.id.signinbuttonlogin);
-
-
-
-
 
         final EditText inputmobile = findViewById(R.id.inputmobile);
         Button buttonOTP = findViewById(R.id.signupbutton);
 
         final ProgressBar progressBar = findViewById(R.id.progressbar);
 
-
-
-        signupbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =  new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-                try {
-                    postRequest(emailNum.getText().toString(),passWord.getText().toString(),firstName.getText().toString(),lastName.getText().toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
 
         buttonOTP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +92,10 @@ public class SignUp extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), Otp.class);
                                 intent.putExtra("mobile",inputmobile.getText().toString());
                                 intent.putExtra("verificationId",verificationId);
+                                intent.putExtra("email",emailNum.getText().toString());
+                                intent.putExtra("password",passWord.getText().toString());
+                                intent.putExtra("firstname",firstName.getText().toString());
+                                intent.putExtra("lastname",lastName.getText().toString());
                                 startActivity(intent);
                             }
                         }
@@ -123,52 +107,6 @@ public class SignUp extends AppCompatActivity {
         });
         
 
-    }
-    public void postRequest(String signInEmailNum, String signInPassword, String firstname, String lastname) throws IOException {
-        //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbzmr1CpikywdCBGwiUOzMu-xG3CN0JE0nlBYo-n7AvXLFaHwM0B-5SaLLFE9EGBhafO/exec";
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("action","register")
-                .addFormDataPart("email", signInEmailNum)
-                .addFormDataPart("password", signInPassword)
-                .addFormDataPart("firstname", firstname)
-                .addFormDataPart("lastname",lastname)
-                .build();
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                //String mMessage = e.getMessage().toString();
-                //Log.w("failure Response", mMessage);
-                //call.cancel();
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseText = response.body().string();
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        if(responseText.equals("Success")){
-                            Toast.makeText(SignUp.this, responseText, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
-                            //storing
-                        }
-                        else{
-                            Toast.makeText(SignUp.this, responseText, Toast.LENGTH_SHORT).show();
-                        }
-                        //Toast.makeText(MainActivity.this, mMessage, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                //Log.e(TAG, mMessage);
-            }
-        });
     }
 
     ////Transparent Status Bar

@@ -28,7 +28,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Otp extends AppCompatActivity {
     private EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
@@ -40,7 +49,11 @@ public class Otp extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
 
 
-        TextView textView = findViewById(R.id.resendcodebutton);
+        String email = getIntent().getStringExtra("email");
+        String password = getIntent().getStringExtra("password");
+        String firstname = getIntent().getStringExtra("firstname");
+        String lastname = getIntent().getStringExtra("lastname");
+
 
         inputCode1 = findViewById(R.id.inputcode1);
         inputCode2 = findViewById(R.id.inputcode2);
@@ -90,9 +103,12 @@ public class Otp extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     buttonVerify.setVisibility(View.VISIBLE);
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
+                                        try {
+                                            postRequest(email,password,firstname,lastname);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
                                     } else {
                                         Toast.makeText(Otp.this, "The verification code entered was invalid", Toast.LENGTH_SHORT).show();
                                         
@@ -246,4 +262,52 @@ public class Otp extends AppCompatActivity {
         // Disable back button..............
     }
 
+
+
+    public void postRequest(String signInEmailNum, String signInPassword, String firstname, String lastname) throws IOException {
+        //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
+        String url = "https://script.google.com/macros/s/AKfycbzmr1CpikywdCBGwiUOzMu-xG3CN0JE0nlBYo-n7AvXLFaHwM0B-5SaLLFE9EGBhafO/exec";
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("action","register")
+                .addFormDataPart("email", signInEmailNum)
+                .addFormDataPart("password", signInPassword)
+                .addFormDataPart("firstname", firstname)
+                .addFormDataPart("lastname",lastname)
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                //String mMessage = e.getMessage().toString();
+                //Log.w("failure Response", mMessage);
+                //call.cancel();
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String responseText = response.body().string();
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        if(responseText.equals("Success")){
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            //storing
+                        }
+                        else{
+                            Toast.makeText(Otp.this, responseText, Toast.LENGTH_SHORT).show();
+                        }
+                        //Toast.makeText(MainActivity.this, mMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                //Log.e(TAG, mMessage);
+            }
+        });
+    }
 }
