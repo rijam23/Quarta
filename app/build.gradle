@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.quarta"
+        applicationId "com.example.quartas"
         minSdkVersion 18
         targetSdkVersion 30
         versionCode 1
@@ -41,4 +41,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.1.0'
     implementation 'com.karumi:dexter:6.2.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.android.volley:volley:1.0.0'
 }

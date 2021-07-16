@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607101637531",
+    "project_id": "loansss",
+    "storage_bucket": "loansss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607101637531:android:fc31673df153622278c73e",
+        "android_client_info": {
+          "package_name": "com.example.quartas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607101637531-q4ruvnsgvvadd4edoshr9oq3rr4v0q73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quartas",
+            "certificate_hash": "e2669b73c96da61c376851dcf2299648b7e9cb6d"
+          }
+        },
+        {
+          "client_id": "607101637531-mk3v2pv2g4tem6dhn1k4d2ec26uf9rlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4CY2-0k1MFL9ICJs1IPH_YmLTnd0jmZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607101637531-mk3v2pv2g4tem6dhn1k4d2ec26uf9rlj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
