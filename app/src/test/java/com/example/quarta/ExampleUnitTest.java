@@ -1,4 +1,4 @@
-package com.example.quartas;
+package com.example.quarta;
 
 import org.junit.Test;
 
