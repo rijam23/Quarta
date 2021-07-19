@@ -75,25 +75,47 @@
 
 
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/inputmobile"
+       <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
-            android:drawableEnd="@drawable/phone"
-            android:hint="+63  MOBILE NUMBER"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="+63"/>
+        <EditText
+            android:id="@+id/inputmobile"
+            android:hint=" Mobile Number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingRight="4dp"
+            android:drawableRight="@drawable/phone"
             android:textSize="20sp" />
+
+
+       </LinearLayout>
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/green"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="5dp"/>
 
         <EditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/green"
-
             android:drawableEnd="@drawable/lock"
             android:hint="PASSWORD"
             android:textSize="20sp" />
+
+
 
         <TextView
             android:layout_width="match_parent"

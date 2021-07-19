@@ -6,319 +6,324 @@
     android:layout_height="match_parent"
     tools:context=".HomeDashBoard">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_marginBottom="-56dp">
 
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:src="@drawable/notificon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.784"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.001" />
-
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:src="@drawable/messagingicon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5" />
-
-        <ImageView
-            android:id="@+id/imageView4"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:layout_marginBottom="7dp"
-            android:src="@drawable/quartaaaaabg"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.0" />
-
-               <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="179dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="211dp"
-            android:src="@drawable/quartatext"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="232dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="108dp"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="right"
-            android:text="Get small loans from Php 1 000.00 to Php 20 000.00 at a monthly interest rate of ONLY 10%."
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.804"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="Magandang Araw"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/namegreet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-black"
-                android:text=""
-                android:textSize="15sp" />
+            android:layout_height="match_parent">
 
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/notificon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.784"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.001" />
 
-        <Button
-            android:id="@+id/applybutton"
-            android:layout_width="226dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="84dp"
-            android:backgroundTint="@color/green"
-            android:fontFamily="@font/poppinsmedium"
-            android:foregroundGravity="center_horizontal"
-            android:text="Apply Now"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/messagingicon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/applybutton"
-            tools:layout_editor_absoluteX="0dp">
-
-            <LinearLayout
-                android:layout_width="76dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/loanhistoryiconicon" />
-
-                <TextView
-                    android:layout_width="71dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:gravity="center"
-                    android:text="Loan History" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="97dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/paymenthistoryIcon"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/loanhistoryicon" />
-
-                <TextView
-                    android:layout_width="104dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:gravity="center"
-                    android:text="Payment History" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/loancalcubutton"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/calcubg" />
-
-                <TextView
-                    android:layout_width="89dp"
-                    android:layout_height="39dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:gravity="center"
-                    android:text="Loan Calculator" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="390dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
-
-
-        <TextView
-            android:id="@+id/textservice"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text="Service Offered"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <HorizontalScrollView
-            android:id="@+id/hzl1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textservice">
-
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="198dp"
+                android:layout_marginBottom="7dp"
+                android:src="@drawable/quartaaaaabg"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                app:layout_constraintVertical_bias="0.0" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="179dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="211dp"
+                android:src="@drawable/quartatext"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/botanycardbtn"
-                    android:layout_width="328dp"
-                    android:layout_height="185dp"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:outlineAmbientShadowColor="@color/black"
-                    android:padding="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="232dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="108dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Get small loans from Php 1 000.00 to Php 20 000.00 at a monthly interest rate of ONLY 10%."
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.804"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/alingmarites" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Magandang Araw"
+                    android:textSize="15sp" />
 
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/tourismbtn"
-                    android:layout_width="328dp"
-                    android:layout_height="185dp"
+                <TextView
+                    android:id="@+id/namegreet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:outlineAmbientShadowColor="@color/black"
-                    android:padding="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/lolasayong" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mareketbtn"
-                    android:layout_width="328dp"
-                    android:layout_height="185dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:outlineAmbientShadowColor="@color/black"
-                    android:padding="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/mangjose" />
-
-
-                </androidx.cardview.widget.CardView>
+                    android:fontFamily="sans-serif-black"
+                    android:text=""
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
 
-        </HorizontalScrollView>
+            <Button
+                android:id="@+id/applybutton"
+                android:layout_width="226dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="84dp"
+                android:backgroundTint="@color/green"
+                android:fontFamily="@font/poppinsmedium"
+                android:foregroundGravity="center_horizontal"
+                android:text="Apply Now"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/applybutton"
+                tools:layout_editor_absoluteX="0dp">
 
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:src="@drawable/loanhistoryiconicon" />
+
+                    <TextView
+                        android:layout_width="71dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:gravity="center"
+                        android:text="Loan History" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="97dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/paymenthistoryIcon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:src="@drawable/loanhistoryicon" />
+
+                    <TextView
+                        android:layout_width="104dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:gravity="center"
+                        android:text="Payment History" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/loancalcubutton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:src="@drawable/calcubg" />
+
+                    <TextView
+                        android:layout_width="89dp"
+                        android:layout_height="39dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:gravity="center"
+                        android:text="Loan Calculator" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="390dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+
+            <TextView
+                android:id="@+id/textservice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Service Offered"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <HorizontalScrollView
+                android:id="@+id/hzl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textservice">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/botanycardbtn"
+                        android:layout_width="328dp"
+                        android:layout_height="185dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:padding="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/alingmarites" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tourismbtn"
+                        android:layout_width="328dp"
+                        android:layout_height="185dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:padding="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/lolasayong" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/mareketbtn"
+                        android:layout_width="328dp"
+                        android:layout_height="185dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:padding="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/mangjose" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
