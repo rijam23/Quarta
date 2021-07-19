@@ -23,6 +23,8 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -43,10 +45,10 @@ public class Otp extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
 
 
-        String email = getIntent().getStringExtra("email");
-        String password = getIntent().getStringExtra("password");
-        String firstname = getIntent().getStringExtra("firstname");
-        String lastname = getIntent().getStringExtra("lastname");
+        String email = md5(getIntent().getStringExtra("email"));
+        String password = md5(getIntent().getStringExtra("password"));
+        String firstname = md5(getIntent().getStringExtra("firstname"));
+        String lastname = md5(getIntent().getStringExtra("lastname"));
 
 
         inputCode1 = findViewById(R.id.inputcode1);
@@ -303,5 +305,23 @@ public class Otp extends AppCompatActivity {
                 //Log.e(TAG, mMessage);
             }
         });
+    }
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
-                    String signInEmailNum = emailNum.getText().toString();
-                    String signInPassword = password.getText().toString();
+                    String signInEmailNum = md5(emailNum.getText().toString());
+                    String signInPassword = md5(password.getText().toString());
                     //postRequest(emailNum.getText().toString(),password.getText().toString());
                     String url = "https://script.google.com/macros/s/AKfycbzmr1CpikywdCBGwiUOzMu-xG3CN0JE0nlBYo-n7AvXLFaHwM0B-5SaLLFE9EGBhafO/exec";
 
@@ -109,9 +111,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
 
-    public void postRequest(String signInEmailNum, String signInPassword) throws IOException {
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            return hexString.toString();
 
-
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
+
 }

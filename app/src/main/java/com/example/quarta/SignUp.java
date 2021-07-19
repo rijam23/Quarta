@@ -95,5 +95,6 @@ public class SignUp extends AppCompatActivity {
 
     }
 
+
     ////Transparent Status Bar
 }
