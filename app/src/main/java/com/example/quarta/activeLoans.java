@@ -133,13 +133,13 @@ public class activeLoans extends AppCompatActivity {
                                 tvPayment1.setText("Date of Payment");
                                 newLinear1.addView(tvPayment1);
                                 newLinear1.addView(tvPayment);
-                                newLinear1.setGravity(Gravity.START);
+                                newLinear1.setGravity(Gravity.CENTER);
                                 newLinear2.addView(tvAmount1);
                                 newLinear2.addView(tvAmount);
-                                newLinear2.setGravity(Gravity.START);
+                                newLinear2.setGravity(Gravity.CENTER);
                                 newLinear3.addView(tvStatus1);
                                 newLinear3.addView(tvStatus);
-                                newLinear3.setGravity(Gravity.START);
+                                newLinear3.setGravity(Gravity.CENTER);
 
                                 newLinear.addView(newLinear1);
                                 newLinear.addView(newLinear2);
