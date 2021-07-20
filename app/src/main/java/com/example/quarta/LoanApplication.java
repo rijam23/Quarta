@@ -81,7 +81,8 @@ public class LoanApplication extends AppCompatActivity {
                         RequestBody requestBody = new MultipartBody.Builder()
                                 .setType(MultipartBody.FORM)
                                 .addFormDataPart("action", "addLoan")
-                                .addFormDataPart("clientid", a)
+                                .addFormDataPart("clienti" +
+                                        "d", a)
                                 .addFormDataPart("loanId", b)
                                 .addFormDataPart("brokerCode", c)
                                 .addFormDataPart("fullName", d)

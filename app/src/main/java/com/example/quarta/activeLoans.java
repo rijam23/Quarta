@@ -1,11 +1,17 @@
 package com.example.quarta;
 
+//import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +34,7 @@ import okhttp3.Response;
 public class activeLoans extends AppCompatActivity {
 
     LinearLayout newLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +69,7 @@ public class activeLoans extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
                 runOnUiThread(new Runnable() {
+
                     public void run() {
                         try {
                             JSONObject jsonObject = new JSONObject(responseText);
@@ -72,30 +80,76 @@ public class activeLoans extends AppCompatActivity {
                                 String amount = actor.getString("amount");
                                 String lastPayment = actor.getString("lastPayment");
 
-                                Toast.makeText(activeLoans.this, status, Toast.LENGTH_SHORT).show();
-                                Toast.makeText(activeLoans.this, amount, Toast.LENGTH_SHORT).show();
-                                Toast.makeText(activeLoans.this, lastPayment, Toast.LENGTH_SHORT).show();
-
-
-                                CardView cardView = new CardView(getApplicationContext());
-                                cardView.setCardBackgroundColor(Color.GREEN);
-                                cardView.setRadius(20);
-                                cardView.setLayoutParams(new ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams layoutPar = new ViewGroup.LayoutParams(
                                         ViewGroup.LayoutParams.WRAP_CONTENT,
-                                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                layoutParams.setMargins(20, 10, 20, 10);
+
+                                CardView cardview = new CardView(getApplicationContext());
+                                cardview.setLayoutParams(layoutParams);
+                                cardview.setRadius(10);
+                                cardview.setCardBackgroundColor(getResources().getColor(R.color.white));
+
+                                LinearLayout newLinear1 = new LinearLayout(getApplicationContext());
+                                newLinear1.setOrientation(LinearLayout.HORIZONTAL);
+                                LinearLayout newLinear2 = new LinearLayout(getApplicationContext());
+                                newLinear2.setOrientation(LinearLayout.HORIZONTAL);
+                                LinearLayout newLinear3 = new LinearLayout(getApplicationContext());
+                                newLinear3.setOrientation(LinearLayout.HORIZONTAL);
+
+                                LinearLayout newLinear = new LinearLayout(getApplicationContext());
+                                newLinear.setOrientation(LinearLayout.VERTICAL);
+
+                                Typeface tF = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    tF = getResources().getFont(R.font.poppinsbold);
+                                }
+
                                 TextView tvStatus = new TextView(getApplicationContext());
-                                tvStatus.setText("Status: "+status);
+                                tvStatus.setText(status);
+                                tvStatus.setTextColor(getResources().getColor(R.color.green));
+                                tvStatus.setTextSize(20);
+                                tvStatus.setTypeface(tF);
+                                TextView tvStatus1 = new TextView(getApplicationContext());
+                                tvStatus1.setText("Status");
 
                                 TextView tvAmount = new TextView(getApplicationContext());
-                                tvAmount.setText("Amount: "+amount);
+                                tvAmount.setText(amount);
+                                tvAmount.setTextColor(getResources().getColor(R.color.green));
+                                tvAmount.setTextSize(20);
+                                tvAmount.setTypeface(tF);
+                                TextView tvAmount1 = new TextView(getApplicationContext());
+                                tvAmount1.setText("Loan Amount");
 
                                 TextView tvPayment = new TextView(getApplicationContext());
-                                tvPayment.setText("Last Payment: "+lastPayment);
-                                cardView.addView(tvAmount);
-                                newLayout.addView(cardView);
-                                newLayout.addView(tvStatus);
-                                newLayout.addView(tvPayment);
+                                tvPayment.setText(lastPayment);
+                                tvPayment.setTextColor(getResources().getColor(R.color.green));
+                                tvPayment.setTextSize(20);
+                                tvPayment.setTypeface(tF);
+                                TextView tvPayment1 = new TextView(getApplicationContext());
+                                tvPayment1.setText("Date of Payment");
+                                newLinear1.addView(tvPayment1);
+                                newLinear1.addView(tvPayment);
+                                newLinear1.setGravity(Gravity.START);
+                                newLinear2.addView(tvAmount1);
+                                newLinear2.addView(tvAmount);
+                                newLinear2.setGravity(Gravity.START);
+                                newLinear3.addView(tvStatus1);
+                                newLinear3.addView(tvStatus);
+                                newLinear3.setGravity(Gravity.START);
 
+                                newLinear.addView(newLinear1);
+                                newLinear.addView(newLinear2);
+                                newLinear.addView(newLinear3);
+
+                                cardview.addView(newLinear);
+
+
+
+                                newLayout.addView(cardview);
 
 
 
