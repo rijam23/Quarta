@@ -6,29 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".activeLoans">
 
-    <LinearLayout
-        android:id="@+id/utangslayout"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#8B8B8B"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/utangslayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#9D0707"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="20dp">
+            android:background="#8B8B8B"
+            android:orientation="vertical" />
+    </ScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"/>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

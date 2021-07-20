@@ -86,7 +86,7 @@ public class activeLoans extends AppCompatActivity {
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
                                 LinearLayout.LayoutParams matchWrap = new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                        LinearLayout.LayoutParams.MATCH_PARENT);
                                 matchWrap.setMargins(20, 10, 20, 10);
 
                                 CardView cardview = new CardView(getApplicationContext());
