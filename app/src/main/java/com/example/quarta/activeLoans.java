@@ -83,6 +83,9 @@ public class activeLoans extends AppCompatActivity {
                                 cardView.setLayoutParams(new ViewGroup.LayoutParams(
                                         ViewGroup.LayoutParams.WRAP_CONTENT,
                                         ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+
                                 TextView tvStatus = new TextView(getApplicationContext());
                                 tvStatus.setText("Status: "+status);
 
