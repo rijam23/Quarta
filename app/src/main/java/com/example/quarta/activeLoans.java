@@ -1,9 +1,12 @@
 package com.example.quarta;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +75,14 @@ public class activeLoans extends AppCompatActivity {
                                 Toast.makeText(activeLoans.this, status, Toast.LENGTH_SHORT).show();
                                 Toast.makeText(activeLoans.this, amount, Toast.LENGTH_SHORT).show();
                                 Toast.makeText(activeLoans.this, lastPayment, Toast.LENGTH_SHORT).show();
+
+
+                                CardView cardView = new CardView(getApplicationContext());
+                                cardView.setCardBackgroundColor(Color.GREEN);
+                                cardView.setRadius(20);
+                                cardView.setLayoutParams(new ViewGroup.LayoutParams(
+                                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT));
                                 TextView tvStatus = new TextView(getApplicationContext());
                                 tvStatus.setText("Status: "+status);
 
@@ -80,10 +91,11 @@ public class activeLoans extends AppCompatActivity {
 
                                 TextView tvPayment = new TextView(getApplicationContext());
                                 tvPayment.setText("Last Payment: "+lastPayment);
-
-                                newLayout.addView(tvAmount);
+                                cardView.addView(tvAmount);
+                                newLayout.addView(cardView);
                                 newLayout.addView(tvStatus);
                                 newLayout.addView(tvPayment);
+
 
 
 
