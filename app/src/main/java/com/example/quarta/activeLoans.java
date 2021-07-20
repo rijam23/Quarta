@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.CellInfoWcdma;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
@@ -80,28 +81,32 @@ public class activeLoans extends AppCompatActivity {
                                 String amount = actor.getString("amount");
                                 String lastPayment = actor.getString("lastPayment");
 
-                                ViewGroup.LayoutParams layoutPar = new ViewGroup.LayoutParams(
-                                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                                        ViewGroup.LayoutParams.WRAP_CONTENT);
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams wrap = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                LinearLayout.LayoutParams matchWrap = new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
-                                layoutParams.setMargins(20, 10, 20, 10);
+                                matchWrap.setMargins(20, 10, 20, 10);
 
                                 CardView cardview = new CardView(getApplicationContext());
-                                cardview.setLayoutParams(layoutParams);
+                                cardview.setLayoutParams(matchWrap);
                                 cardview.setRadius(10);
                                 cardview.setCardBackgroundColor(getResources().getColor(R.color.white));
 
                                 LinearLayout newLinear1 = new LinearLayout(getApplicationContext());
                                 newLinear1.setOrientation(LinearLayout.HORIZONTAL);
+                                newLinear1.setLayoutParams(wrap);
                                 LinearLayout newLinear2 = new LinearLayout(getApplicationContext());
                                 newLinear2.setOrientation(LinearLayout.HORIZONTAL);
+                                newLinear2.setLayoutParams(wrap);
                                 LinearLayout newLinear3 = new LinearLayout(getApplicationContext());
                                 newLinear3.setOrientation(LinearLayout.HORIZONTAL);
+                                newLinear3.setLayoutParams(wrap);
 
                                 LinearLayout newLinear = new LinearLayout(getApplicationContext());
                                 newLinear.setOrientation(LinearLayout.VERTICAL);
+                                newLinear.setGravity(Gravity.START);
 
                                 Typeface tF = null;
                                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -114,7 +119,8 @@ public class activeLoans extends AppCompatActivity {
                                 tvStatus.setTextSize(20);
                                 tvStatus.setTypeface(tF);
                                 TextView tvStatus1 = new TextView(getApplicationContext());
-                                tvStatus1.setText("Status");
+                                tvStatus1.setText("         Status:                    ");
+                                tvStatus1.setTextSize(20);
 
                                 TextView tvAmount = new TextView(getApplicationContext());
                                 tvAmount.setText(amount);
@@ -122,7 +128,8 @@ public class activeLoans extends AppCompatActivity {
                                 tvAmount.setTextSize(20);
                                 tvAmount.setTypeface(tF);
                                 TextView tvAmount1 = new TextView(getApplicationContext());
-                                tvAmount1.setText("Loan Amount");
+                                tvAmount1.setText("         Loan Amount:       ");
+                                tvAmount1.setTextSize(20);
 
                                 TextView tvPayment = new TextView(getApplicationContext());
                                 tvPayment.setText(lastPayment);
@@ -130,16 +137,18 @@ public class activeLoans extends AppCompatActivity {
                                 tvPayment.setTextSize(20);
                                 tvPayment.setTypeface(tF);
                                 TextView tvPayment1 = new TextView(getApplicationContext());
-                                tvPayment1.setText("Date of Payment");
+                                tvPayment1.setText("        Date of Payment:  ");
+                                tvPayment1.setTextSize(20);
+
                                 newLinear1.addView(tvPayment1);
                                 newLinear1.addView(tvPayment);
-                                newLinear1.setGravity(Gravity.CENTER);
+                                newLinear1.setGravity(Gravity.START);
                                 newLinear2.addView(tvAmount1);
                                 newLinear2.addView(tvAmount);
-                                newLinear2.setGravity(Gravity.CENTER);
+                                newLinear2.setGravity(Gravity.START);
                                 newLinear3.addView(tvStatus1);
                                 newLinear3.addView(tvStatus);
-                                newLinear3.setGravity(Gravity.CENTER);
+                                newLinear3.setGravity(Gravity.START);
 
                                 newLinear.addView(newLinear1);
                                 newLinear.addView(newLinear2);
