@@ -7,8 +7,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeDashBoard extends AppCompatActivity {
 
     private long pressedTime;
+    Button applyLoan;
 
     @Override
     public void onBackPressed()
@@ -37,7 +40,14 @@ public class HomeDashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_dash_board);
 
-
+        applyLoan = findViewById(R.id.applybutton);
+        applyLoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeDashBoard.this, LoanApplication.class);
+                startActivity(intent);
+            }
+        });
 
         //Initialize And Assign Variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);

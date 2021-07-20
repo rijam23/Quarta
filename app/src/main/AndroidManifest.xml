@@ -11,14 +11,14 @@
         android:roundIcon="@drawable/quartalogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quarta">
-        <activity android:name="com.example.quarta.MainActivity"></activity>
+        <activity android:name="com.example.quarta.LoanApplication"></activity>
+        <activity android:name="com.example.quarta.activeLoans" />
         <activity android:name="com.example.quarta.Profile" />
         <activity android:name="com.example.quarta.QuarTalk" />
-        <activity android:name="com.example.quarta.LoanCalculator" />
         <activity android:name="com.example.quarta.HomeDashBoard" />
         <activity android:name="com.example.quarta.Otp" />
         <activity android:name="com.example.quarta.SignUp" />
-        <activity android:name="com.example.quarta.activeLoans">
+        <activity android:name="com.example.quarta.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
