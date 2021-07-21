@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +17,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -38,6 +41,7 @@ public class LoanApplication extends AppCompatActivity {
     Button send;
     ImageView idImage;
     //AnimationDrawable wifiannim;*/
+    DatePickerDialog.OnDateSetListener setListener;
 
     Uri urs = null;
 
@@ -71,6 +75,29 @@ public class LoanApplication extends AppCompatActivity {
 
 
         send = findViewById(R.id.submitBtn);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        dateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        LoanApplication.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month+1;
+                        String date = day+"/"+month+"/"+year;
+                        dateOfBirth.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+            }
+        });
+
 
         idImage.setOnClickListener(new View.OnClickListener() {
             @Override
