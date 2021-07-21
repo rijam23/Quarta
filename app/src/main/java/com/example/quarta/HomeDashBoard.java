@@ -45,7 +45,7 @@ public class HomeDashBoard extends AppCompatActivity {
         loanHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeDashBoard.this,activeLoans.class);
+                Intent intent = new Intent(HomeDashBoard.this, ActiveLoans.class);
                 startActivity(intent);
             }
         });
