@@ -16,31 +16,23 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/clientId"
+                android:id="@+id/emailAdd"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Client ID"
+                android:hint="Email"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/loanId"
+                android:id="@+id/dataAccess"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Loan ID"
+                android:hint="Data Access?"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/fullName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Fullname"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/loanAmount"
+                android:id="@+id/loanamount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -48,56 +40,156 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/purpose"
+                android:id="@+id/loanterm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Purpose"
+                android:hint="Loan Term"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/source"
+                android:id="@+id/dateofbirth"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Source"
+                android:hint="Date of Birth"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/broker"
+                android:id="@+id/sex"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Broker"
+                android:hint="Sex"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/monthlyNI"
+                android:id="@+id/suffix"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Monthly NI"
+                android:hint="Suffix"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/end"
+                android:id="@+id/lastname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="End"
+                android:hint="Last Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="First Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/middlename"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Middle Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Current Address"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="100dp"
                 tools:layout_editor_absoluteY="54dp" />
 
             <EditText
-                android:id="@+id/monthIncluded"
+                android:id="@+id/contactnumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Month Included"
+                android:hint="Contact Number"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="100dp"
                 tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/cellnetwork"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Cellular Network"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/fbname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Facebook Name"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/purposeofborrowing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Purpose for borrowing"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/sourceoffund"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Source of fund to repay"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/monthlyIncome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Monthly Net Income"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/howClarenceBank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="How did you get to know ClarenceBANK?"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <EditText
+                android:id="@+id/brokerCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Broker Code"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="100dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <ImageView
+                android:id="@+id/idImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/user" />
 
             <Button
                 android:id="@+id/submitBtn"

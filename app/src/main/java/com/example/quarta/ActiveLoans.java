@@ -3,17 +3,11 @@ package com.example.quarta;
 //import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.res.ResourcesCompat;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.telephony.CellInfoWcdma;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +26,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class activeLoans extends AppCompatActivity {
+public class ActiveLoans extends AppCompatActivity {
 
     LinearLayout newLayout;
 
@@ -43,7 +37,7 @@ public class activeLoans extends AppCompatActivity {
 
         newLayout = findViewById(R.id.utangslayout);
 
-        Toast.makeText(activeLoans.this, "hello", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
         String url = "https://script.google.com/macros/s/AKfycbz0fzk5Es4iCMpCSr2MwYJP4A0qleT2FVWu63q73dj705m2lJgU6VpG1jA9qhEDBJyw/exec";
 
         OkHttpClient client = new OkHttpClient();
