@@ -89,6 +89,9 @@ public class activeLoans extends AppCompatActivity {
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
                                 matchWrap.setMargins(20, 10, 20, 10);
 
+
+
+
                                 CardView cardview = new CardView(getApplicationContext());
                                 cardview.setLayoutParams(matchWrap);
                                 cardview.setRadius(10);
@@ -117,9 +120,10 @@ public class activeLoans extends AppCompatActivity {
                                 tvStatus.setText(status);
                                 tvStatus.setTextColor(getResources().getColor(R.color.green));
                                 tvStatus.setTextSize(20);
-                                tvStatus.setTypeface(tF);
+                                tvStatus.setPadding(0,0,5,0);
                                 TextView tvStatus1 = new TextView(getApplicationContext());
                                 tvStatus1.setText("         Status:                    ");
+                                tvStatus1.setPadding(5,0,0,0);
                                 tvStatus1.setTextSize(20);
 
                                 TextView tvAmount = new TextView(getApplicationContext());
