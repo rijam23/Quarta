@@ -18,7 +18,8 @@
         <activity android:name="com.example.quarta.HomeDashBoard" />
         <activity android:name="com.example.quarta.Otp" />
         <activity android:name="com.example.quarta.SignUp" />
-        <activity android:name="com.example.quarta.MainActivity">
+        <activity android:name="com.example.quarta.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

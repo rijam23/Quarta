@@ -125,6 +125,18 @@
                 tools:layout_editor_absoluteX="100dp"
                 tools:layout_editor_absoluteY="54dp" />
 
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Network Provider"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:ems="10"
+                android:text="">
+
+            </AutoCompleteTextView>
+
             <EditText
                 android:id="@+id/fbname"
                 android:layout_width="match_parent"

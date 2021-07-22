@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">QuartaTestapk</string>
+<string-array name="networklist">
+    <item>SMART</item>
+    <item>GLOBE</item>
+    <item>SUN</item>
+    <item>DITO</item>
+    <item>GOMO</item>
+</string-array>
 </resources>
