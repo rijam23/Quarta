@@ -170,7 +170,7 @@ public class LoanApplication extends AppCompatActivity {
                                             startActivity(intent);
                                             //storing
                                         } else {
-                                            Toast.makeText(LoanApplication.this, responseText, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoanApplication.this,"Error Comms", Toast.LENGTH_SHORT).show();
                                         }
                                         //Toast.makeText(MainActivity.this, mMessage, Toast.LENGTH_SHORT).show();
                                     }
@@ -179,7 +179,7 @@ public class LoanApplication extends AppCompatActivity {
                             }
                         });
                     } catch (NullPointerException e1) {
-
+                        Toast.makeText(LoanApplication.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                     //
                 } else {
@@ -198,7 +198,6 @@ public class LoanApplication extends AppCompatActivity {
                         // There are no request codes
                         Intent data = result.getData();
                         urs = data.getData();
-
                         idImage.setImageURI(urs);
                     }
                 }
