@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,15 +16,20 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -34,10 +40,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoanApplication extends AppCompatActivity {
-    EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber, cellularNetwork, fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
+    EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
     Button send;
+    AutoCompleteTextView cellularNetwork;
     ImageView idImage;
     //AnimationDrawable wifiannim;*/
+    DatePickerDialog.OnDateSetListener setListener;
+
+    String[] language ={"SMART","GLOBE","SUN","DITO","GOMO"};
 
     Uri urs = null;
 
@@ -58,7 +68,7 @@ public class LoanApplication extends AppCompatActivity {
         sex = findViewById(R.id.sex);
         currentAddress = findViewById(R.id.address);
         contactNumber = findViewById(R.id.contactnumber);
-        cellularNetwork = findViewById(R.id.cellnetwork);
+        cellularNetwork = findViewById(R.id.autoCompleteTextView1);
         fbName = findViewById(R.id.fbname);
         purposeBorrow = findViewById(R.id.purposeofborrowing);
         sourceOfIncome = findViewById(R.id.sourceoffund);
@@ -67,10 +77,45 @@ public class LoanApplication extends AppCompatActivity {
         brokerCode = findViewById(R.id.brokerCode);
 
 
+
+
         idImage = findViewById(R.id.idImage);
 
 
         send = findViewById(R.id.submitBtn);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, language);
+        //Find TextView control
+        AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
+        //Set the number of characters the user must type before the drop down list is shown
+        acTextView.setThreshold(1);
+        //Set the adapter
+        acTextView.setAdapter(adapter);
+
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        dateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        LoanApplication.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month+1;
+                        String date = day+"/"+month+"/"+year;
+                        dateOfBirth.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+            }
+        });
+
 
         idImage.setOnClickListener(new View.OnClickListener() {
             @Override
