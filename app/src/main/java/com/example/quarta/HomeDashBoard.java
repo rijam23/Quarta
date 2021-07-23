@@ -20,6 +20,7 @@ public class HomeDashBoard extends AppCompatActivity {
 
     private long pressedTime;
     Button applyLoan;
+    ImageView paymentHistory;
     ImageView loanHistory;
 
     @Override
@@ -41,6 +42,17 @@ public class HomeDashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_dash_board);
+        paymentHistory = findViewById(R.id.paymenthistoryIcon);
+        paymentHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(HomeDashBoard.this, PaymentHistory.class);
+                startActivity(intent);
+            }
+        });
+
+
         loanHistory = findViewById(R.id.loanHistory);
         loanHistory.setOnClickListener(new View.OnClickListener() {
             @Override
