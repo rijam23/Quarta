@@ -47,7 +47,7 @@ public class Otp extends AppCompatActivity {
 
         String email = getIntent().getStringExtra("email");
         String password = getIntent().getStringExtra("password");
-        String firstname = md5(getIntent().getStringExtra("firstname"));
+        String firstname = getIntent().getStringExtra("firstname");
         String lastname = getIntent().getStringExtra("lastname");
 
 
