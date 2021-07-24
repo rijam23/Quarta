@@ -56,17 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
-                    String signInEmailNum = md5(emailNum.getText().toString());
-                    String signInPassword = md5(password.getText().toString());
+                    String signInEmailNum = emailNum.getText().toString();
+                    String signInPassword = password.getText().toString();
                     //postRequest(emailNum.getText().toString(),password.getText().toString());
-                    String url = "https://script.google.com/macros/s/AKfycbzmr1CpikywdCBGwiUOzMu-xG3CN0JE0nlBYo-n7AvXLFaHwM0B-5SaLLFE9EGBhafO/exec";
+                    String url = "https://script.google.com/macros/s/AKfycby8DlsZn3mdPw8hcFFonCk3Rm53ReHQ5bNb5Y26shWEklBmfUmzpQvSoCmw8PcggZdD/exec";
 
                     OkHttpClient client = new OkHttpClient();
 
                     RequestBody requestBody = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
                             .addFormDataPart("action", "login")
-                            .addFormDataPart("email", signInEmailNum)
+                            .addFormDataPart("number", "0"+signInEmailNum)
                             .addFormDataPart("password", signInPassword)
                             .build();
                     Request request = new Request.Builder()
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call call, Response response) throws IOException {
                             try {
                                 String responseText = response.body().string();
+
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         if (responseText.equals("Login Success")) {

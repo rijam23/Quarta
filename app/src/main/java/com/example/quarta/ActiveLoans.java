@@ -38,7 +38,7 @@ public class ActiveLoans extends AppCompatActivity {
         newLayout = findViewById(R.id.utangslayout);
 
         Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbz0fzk5Es4iCMpCSr2MwYJP4A0qleT2FVWu63q73dj705m2lJgU6VpG1jA9qhEDBJyw/exec";
+        String url = "https://script.google.com/macros/s/AKfycbyhrX6zKqj2g2aj8otaHv04V0mbFeTER8XlMeootIwCXQMBZrVdkWSExJtTpz4_4EWN/exec";
 
         OkHttpClient client = new OkHttpClient();
 

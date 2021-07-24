@@ -33,6 +33,7 @@ import okhttp3.Response;
 
 public class PaymentHistory extends AppCompatActivity {
     LinearLayout newLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +73,8 @@ public class PaymentHistory extends AppCompatActivity {
                             JSONArray cast = jsonObject.getJSONArray("items");
                             for (int i = 0; i < cast.length(); i++) {
                                 JSONObject actor = cast.getJSONObject(i);
-                                String lastPayment="";
-                                String statut="";
+                                String lastPayment = "";
+                                String statut = "";
                                 String status = actor.getString("loanterm");
                                 Toast.makeText(PaymentHistory.this, status, Toast.LENGTH_SHORT).show();
 
@@ -152,7 +153,7 @@ public class PaymentHistory extends AppCompatActivity {
                                 JSONArray cast2 = actor.getJSONArray("monthlyBreakdown");
                                 JSONArray cast3 = actor.getJSONArray("statusBreadkown");
                                 for (int j = 0; j < cast2.length(); j++) {
-                                    lastPayment = cast2.getString(j)+" ["+cast3.getString(j)+"]";
+                                    lastPayment = cast2.getString(j) + " [" + cast3.getString(j) + "]";
                                     TextView tvPayment = new TextView(getApplicationContext());
 
                                     tvPayment.setText(lastPayment);
@@ -169,7 +170,6 @@ public class PaymentHistory extends AppCompatActivity {
                                 }
 
 
-
                                 newLinear1.setGravity(Gravity.START);
                                 newLinear2.addView(tvAmount1);
                                 newLinear2.addView(tvAmount);
@@ -183,23 +183,15 @@ public class PaymentHistory extends AppCompatActivity {
                                 newLinear.addView(newLinear3);
 
                                 cardview.addView(newLinear);
-
-
-
                                 newLayout.addView(cardview);
 
-
-
                             }
-
                         } catch (JSONException e) {
                             Toast.makeText(PaymentHistory.this, e.toString(), Toast.LENGTH_SHORT).show();
-                            Log.d("Error",e.toString());
+                            Log.d("Error", e.toString());
                         }
-
                     }
                 });
-
             }
         });
     }
