@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quarta">
         <activity android:name="com.example.quarta.LoanApplication"></activity>
-        <activity android:name=".PaymentHistory"/>
+        <activity android:name="com.example.quarta.PaymentHistory"/>
         <activity android:name="com.example.quarta.ActiveLoans" />
         <activity android:name="com.example.quarta.Profile" />
         <activity android:name="com.example.quarta.QuarTalk" />

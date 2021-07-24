@@ -45,10 +45,10 @@ public class Otp extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
 
 
-        String email = md5(getIntent().getStringExtra("email"));
-        String password = md5(getIntent().getStringExtra("password"));
+        String email = getIntent().getStringExtra("email");
+        String password = getIntent().getStringExtra("password");
         String firstname = md5(getIntent().getStringExtra("firstname"));
-        String lastname = md5(getIntent().getStringExtra("lastname"));
+        String lastname = getIntent().getStringExtra("lastname");
 
 
         inputCode1 = findViewById(R.id.inputcode1);
@@ -262,17 +262,17 @@ public class Otp extends AppCompatActivity {
 
     public void postRequest(String signInEmailNum, String signInPassword, String firstname, String lastname) throws IOException {
         //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbzmr1CpikywdCBGwiUOzMu-xG3CN0JE0nlBYo-n7AvXLFaHwM0B-5SaLLFE9EGBhafO/exec";
+        String url = "https://script.google.com/macros/s/AKfycbwXlVXrGQphW-NJIWKYGgFu3ywdecO2uR9ikN55-BXLTZ7jGrZkb-yJ-EwR3ypd507_/exec";
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("action","register")
-                .addFormDataPart("email", signInEmailNum)
+                .addFormDataPart("contactNumber", signInEmailNum)
                 .addFormDataPart("password", signInPassword)
-                .addFormDataPart("firstname", firstname)
-                .addFormDataPart("lastname",lastname)
+                .addFormDataPart("firstName", firstname)
+                .addFormDataPart("lastName",lastname)
                 .build();
         Request request = new Request.Builder()
                 .url(url)

@@ -6,10 +6,10 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\user\\keystore\\newKey1.keystore')
-            storePassword 'cartoonists'
-            keyAlias 'key0'
-            keyPassword 'cartoonists'
+            storeFile file('C:\\Users\\user\\.android\\debug.keystore')
+            keyAlias 'androiddebugkey'
+            storePassword 'android'
+            keyPassword 'android'
         }
     }
     compileSdkVersion 30

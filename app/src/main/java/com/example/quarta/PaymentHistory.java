@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.graphics.Typeface;
-import android.icu.text.Edits;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +14,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,7 +34,7 @@ public class PaymentHistory extends AppCompatActivity {
         setContentView(R.layout.activity_payment_history);
         newLayout = findViewById(R.id.linearLayoutPayment);
 
-        String url = "https://script.google.com/macros/s/AKfycby59IA7QPs4QqIz47X79eInl5TI5zMCnm-MD4bUJI3naP6bcD1p_UU10XB9EOiVu7kw/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzYGU67yDqGgtmtU0YRXuXlpITzjB-ndfmoj-EPjWOlO6Rqe955g_x9LQoeY7ZgX0F3/exec";
 
         OkHttpClient client = new OkHttpClient();
 
