@@ -3,6 +3,7 @@ package com.example.quarta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class PaymentHistory extends AppCompatActivity {
         setContentView(R.layout.activity_payment_history);
         newLayout = findViewById(R.id.linearLayoutPayment);
 
-        String url = "https://script.google.com/macros/s/AKfycbzYGU67yDqGgtmtU0YRXuXlpITzjB-ndfmoj-EPjWOlO6Rqe955g_x9LQoeY7ZgX0F3/exec";
+        String url = "https://script.google.com/macros/s/AKfycbwhcBWb3Xixm7SFAb7lUwD7jozoIicX-SGUGtzHLTU7fHdgcoB6E8IslJo_F5BqAwsl/exec";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -73,7 +74,7 @@ public class PaymentHistory extends AppCompatActivity {
                                 Toast.makeText(PaymentHistory.this, status, Toast.LENGTH_SHORT).show();
 
 
-                                String amount = actor.getString("loanid");
+                                String amount = actor.getString("loanAmountsBreakdown");
 
 
                                 //Toast.makeText(PaymentHistory.this, newJSonArr, Toast.LENGTH_SHORT).show();
@@ -92,15 +93,22 @@ public class PaymentHistory extends AppCompatActivity {
                                         LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
                                 matchWrap.setMargins(20, 10, 20, 10);
-
+                                LinearLayout.LayoutParams matchWrapNOMargin = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
                                 CardView cardview = new CardView(getApplicationContext());
                                 cardview.setLayoutParams(matchWrap);
                                 cardview.setRadius(10);
                                 cardview.setCardBackgroundColor(getResources().getColor(R.color.white));
 
+                                LinearLayout newLineartxtView = new LinearLayout(getApplicationContext());
+                                newLineartxtView.setOrientation(LinearLayout.VERTICAL);
+                                newLineartxtView.setLayoutParams(matchWrapNOMargin);
+
                                 LinearLayout newLinear1 = new LinearLayout(getApplicationContext());
-                                newLinear1.setOrientation(LinearLayout.VERTICAL);
+                                newLinear1.setOrientation(LinearLayout.HORIZONTAL);
                                 newLinear1.setLayoutParams(wrap);
+
 
                                 LinearLayout newLinear2 = new LinearLayout(getApplicationContext());
                                 newLinear2.setOrientation(LinearLayout.HORIZONTAL);
@@ -135,46 +143,47 @@ public class PaymentHistory extends AppCompatActivity {
                                 tvAmount.setTextSize(20);
                                 tvAmount.setTypeface(tF);
                                 TextView tvAmount1 = new TextView(getApplicationContext());
-                                tvAmount1.setText("         Loan ID:       ");
+                                tvAmount1.setText("         Amount:       ");
                                 tvAmount1.setTextSize(20);
 
 
                                 TextView tvPayment1 = new TextView(getApplicationContext());
-                                tvPayment1.setText("        Dates:  ");
-                                tvPayment1.setTextSize(10);
-                                newLinear1.addView(tvPayment1);
+                                tvPayment1.setText("         Dates:  ");
+                                tvPayment1.setTextSize(20);
+                                //newLineartxtView.addView(tvPayment1);
 
                                 JSONArray cast2 = actor.getJSONArray("monthlyBreakdown");
-                                JSONArray cast3 = actor.getJSONArray("statusBreadkown");
+                                JSONArray cast3 = actor.getJSONArray("statusBreakdown");
                                 for (int j = 0; j < cast2.length(); j++) {
                                     lastPayment = cast2.getString(j) + " [" + cast3.getString(j) + "]";
                                     TextView tvPayment = new TextView(getApplicationContext());
 
                                     tvPayment.setText(lastPayment);
                                     tvPayment.setTextColor(getResources().getColor(R.color.green));
-                                    tvPayment.setTextSize(10);
+                                    tvPayment.setTextSize(20);
                                     tvPayment.setTypeface(tF);
 
 
-                                    newLinear1.addView(tvPayment);
-                                }
-
-                                for (int j = 0; j < cast2.length(); j++) {
-                                    status = cast2.getString(j);
+                                    newLineartxtView.addView(tvPayment);
                                 }
 
 
+                                newLineartxtView.setGravity(Gravity.START);
+                                newLinear1.addView(tvPayment1);
+                                newLinear1.addView(newLineartxtView);
                                 newLinear1.setGravity(Gravity.START);
+
                                 newLinear2.addView(tvAmount1);
                                 newLinear2.addView(tvAmount);
                                 newLinear2.setGravity(Gravity.START);
+
                                 newLinear3.addView(tvStatus1);
                                 newLinear3.addView(tvStatus);
                                 newLinear3.setGravity(Gravity.START);
 
-                                newLinear.addView(newLinear1);
                                 newLinear.addView(newLinear2);
                                 newLinear.addView(newLinear3);
+                                newLinear.addView(newLinear1);
 
                                 cardview.addView(newLinear);
                                 newLayout.addView(cardview);
