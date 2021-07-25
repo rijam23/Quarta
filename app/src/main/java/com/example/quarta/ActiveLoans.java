@@ -4,6 +4,7 @@ package com.example.quarta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,16 +37,18 @@ public class ActiveLoans extends AppCompatActivity {
         setContentView(R.layout.activity_active_loans);
 
         newLayout = findViewById(R.id.utangslayout);
+        SharedPreferences sf = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        String clientID = sf.getString("clientID","");
 
         Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbyhrX6zKqj2g2aj8otaHv04V0mbFeTER8XlMeootIwCXQMBZrVdkWSExJtTpz4_4EWN/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzPh5wI8YIEvzZTV3X3SQoDfxZ-kyghMcG7kiy9tkvEy-8Gh85nnfGxKpUjejS1FrW-/exec";
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("action", "activeloans")
-                .addFormDataPart("clientId", "1986-NorieNobelaManilag")
+                .addFormDataPart("clientId", clientID)
                 .build();
 
         Request request = new Request.Builder()

@@ -169,6 +169,11 @@ public class HomeDashBoard extends AppCompatActivity {
                 String txtResponse = response.body().string();
                 CLientID = txtResponse;
 
+                SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("clientID", CLientID);
+                myEdit.apply();
+
             }
         });
 
