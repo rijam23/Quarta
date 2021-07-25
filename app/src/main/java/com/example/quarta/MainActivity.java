@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                             //storing
                                             SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
                                             SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                                            myEdit.putString("email", signInEmailNum);
+                                            myEdit.putString("number", "0"+signInEmailNum);
                                             myEdit.apply();
                                         } else {
                                             Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();

@@ -27,7 +27,7 @@ public class QuarTalk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quar_talk);
         /////////////////////Transparent Status Bar//////////////////////////////////////////////////////
-        getSupportActionBar().hide();//its hide actionbar
+        //getSupportActionBar().hide();//its hide actionbar
         if (Build.VERSION.SDK_INT>=19 && Build.VERSION.SDK_INT<21){
             setWindowsFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
         }

@@ -3,6 +3,7 @@ package com.example.quarta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -35,14 +36,17 @@ public class PaymentHistory extends AppCompatActivity {
         setContentView(R.layout.activity_payment_history);
         newLayout = findViewById(R.id.linearLayoutPayment);
 
-        String url = "https://script.google.com/macros/s/AKfycbwhcBWb3Xixm7SFAb7lUwD7jozoIicX-SGUGtzHLTU7fHdgcoB6E8IslJo_F5BqAwsl/exec";
+        String clientId = getIntent().getStringExtra("clientID");
+
+
+        String url = "https://script.google.com/macros/s/AKfycbwUSeL0IQ-0ntnvXmHNnDqn6ZxRRGABktwv8iiwPfXYmtJnxWRohMKjMVzQa73tdAA/exec";
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("action", "getLoanBreakdowns")
-                .addFormDataPart("clientId", "1986-NorieNobelaManilag")
+                .addFormDataPart("clientId", clientId)
                 .build();
 
         Request request = new Request.Builder()
