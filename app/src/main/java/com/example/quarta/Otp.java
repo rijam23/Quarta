@@ -317,7 +317,7 @@ public class Otp extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         if(responseText.equals("Success")){
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            Intent intent = new Intent(Otp.this,MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             //storing
