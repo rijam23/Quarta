@@ -169,6 +169,6 @@ surfix1.setOnClickListener(new View.OnClickListener() {
     }
     private static final String[] gender = new String[]{"Male","Female","3x a day"};
     private static final String[] surfix = new String[]{"Jr","Sr","III","N/A"};
-    private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","3x a day"};
+    private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","DITO"};
 
 }

@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/green"
                         android:drawableRight="@drawable/dropdown"
-                        android:hint="Gender"
+                        android:hint="Sex"
                         android:textSize="20sp">
 
                     </AutoCompleteTextView>
