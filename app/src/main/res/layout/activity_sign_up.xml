@@ -99,9 +99,13 @@
                         android:id="@+id/surfixinput"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:autoLink="none"
+                        android:autoText="false"
                         android:backgroundTint="@color/green"
+                        android:completionThreshold="100"
                         android:drawableRight="@drawable/dropdown"
-                        android:hint="Surfix"
+                        android:hint="Suffix"
+                        android:inputType="text"
                         android:textSize="20sp">
 
                     </AutoCompleteTextView>

@@ -49,6 +49,14 @@ public class Otp extends AppCompatActivity {
         String password = getIntent().getStringExtra("password");
         String firstname = getIntent().getStringExtra("firstname");
         String lastname = getIntent().getStringExtra("lastname");
+        String suffix = getIntent().getStringExtra("suffix");
+        String sex = getIntent().getStringExtra("sex");
+        String dateOfBirth = getIntent().getStringExtra("dateOfBirth");
+        String number = getIntent().getStringExtra("mobile");
+        String Address = getIntent().getStringExtra("address");
+        String network = getIntent().getStringExtra("networkProvider");
+        String base64Image = getIntent().getStringExtra("Base64EncImage");
+
 
 
         inputCode1 = findViewById(R.id.inputcode1);
@@ -100,7 +108,7 @@ public class Otp extends AppCompatActivity {
                                     buttonVerify.setVisibility(View.VISIBLE);
                                     if(task.isSuccessful()){
                                         try {
-                                            postRequest(email,password,firstname,lastname);
+                                            postRequest(email,password,firstname,lastname,suffix,sex,dateOfBirth,number,Address,network,base64Image);
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -260,19 +268,37 @@ public class Otp extends AppCompatActivity {
 
 
 
-    public void postRequest(String signInEmailNum, String signInPassword, String firstname, String lastname) throws IOException {
+    public void postRequest(String signInEmailNum,
+                            String signInPassword,
+                            String firstname,
+                            String lastname,
+                            String suffix,
+                            String sex,
+                            String dateOfBirth,
+                            String number,
+                            String Address,
+                            String network,
+                            String base64Image) throws IOException {
         //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzk0Q1N-nprJzfibsyzelHQ26hjGZNyxJEvhDpyXvQpTFl8qirY3IZHHSyw_Y5jCBhK/exec";
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("action","register")
-                .addFormDataPart("contactNumber", signInEmailNum)
+                .addFormDataPart("emailAddress", signInEmailNum)
                 .addFormDataPart("password", signInPassword)
                 .addFormDataPart("firstName", firstname)
                 .addFormDataPart("lastName",lastname)
+                .addFormDataPart("suffix", suffix)
+                .addFormDataPart("sex", sex)
+                .addFormDataPart("dateOfBirth", dateOfBirth)
+                .addFormDataPart("contactNumber", "'0"+number)
+                .addFormDataPart("address", Address)
+                .addFormDataPart("cellularNetwork", network)
+                .addFormDataPart("profilePhoto",base64Image)
+
                 .build();
         Request request = new Request.Builder()
                 .url(url)
@@ -295,6 +321,7 @@ public class Otp extends AppCompatActivity {
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             //storing
+
                         }
                         else{
                             Toast.makeText(Otp.this, responseText, Toast.LENGTH_SHORT).show();

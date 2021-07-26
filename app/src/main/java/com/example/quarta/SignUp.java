@@ -1,11 +1,20 @@
 package com.example.quarta;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -14,7 +23,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,14 +30,20 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class SignUp extends AppCompatActivity {
     AutoCompleteTextView surfixInpuT;
     TextView signupbtn;
-    EditText firstName, emailNum, passWord, lastName, dateOfBirth;
+    EditText firstName,  lastName, sexes, dateOfBirth, emailAdd, Address, SimNetwork, Number, passWord;
     Button createAcc;
+    ImageView idImage2;
+    Uri urs2;
+    String encImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +52,26 @@ public class SignUp extends AppCompatActivity {
 
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
-        emailNum = findViewById(R.id.inputmobile);
-        passWord = findViewById(R.id.inputPassword);
+        sexes = findViewById(R.id.genderinput);
         dateOfBirth = findViewById(R.id.inputDateofBirth);
-
+        emailAdd = findViewById(R.id.Inputemail);
+        Address = findViewById(R.id.Inputadress);
+        SimNetwork = findViewById(R.id.networkproviderinput);
+        Number = findViewById(R.id.inputmobile);
+        passWord = findViewById(R.id.inputPassword);
         surfixInpuT = findViewById(R.id.surfixinput);
+
+        idImage2 = findViewById(R.id.idImageinput);
+        idImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //Intent intent = new Intent(uploadImageTest.this, pickpick.class);
+                someActivityResultLaunchers.launch(intent);
+            }
+        });
+
+
 
 
         AutoCompleteTextView gender1 =(AutoCompleteTextView)findViewById(R.id.genderinput);
@@ -63,8 +92,6 @@ surfix1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         surfix1.showDropDown();
-
-
     }
 });
         gender1.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +143,27 @@ surfix1.setOnClickListener(new View.OnClickListener() {
         buttonOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (urs2 != null) {
+                    InputStream imageStream = null;
+
+                    try {
+                        imageStream = getContentResolver().openInputStream(urs2);
+                    } catch (FileNotFoundException fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                    Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    selectedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+                    byte[] bytes = baos.toByteArray();
+                    encImage = Base64.encodeToString(bytes, Base64.DEFAULT);
+                }else{
+                    Toast.makeText(SignUp.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+
                 if (inputmobile.getText().toString().trim().isEmpty()) {
                     Toast.makeText(SignUp.this, "Enter Mobile", Toast.LENGTH_SHORT).show();
                     return;
@@ -150,12 +198,20 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                                 progressBar.setVisibility(View.GONE);
                                 buttonOTP.setVisibility(View.VISIBLE);
                                 Intent intent = new Intent(getApplicationContext(), Otp.class);
-                                intent.putExtra("mobile", inputmobile.getText().toString());
                                 intent.putExtra("verificationId", verificationId);
-                                intent.putExtra("email", "'0" + emailNum.getText().toString());
+                                intent.putExtra("mobile", inputmobile.getText().toString());
+                                intent.putExtra("email", emailAdd.getText().toString());
                                 intent.putExtra("password", passWord.getText().toString());
                                 intent.putExtra("firstname", firstName.getText().toString());
                                 intent.putExtra("lastname", lastName.getText().toString());
+                                intent.putExtra("suffix",surfixInpuT.getText().toString());
+                                intent.putExtra("dateOfBirth",dateOfBirth.getText().toString());
+                                intent.putExtra("address", Address.getText().toString());
+                                intent.putExtra("networkProvider", SimNetwork.getText().toString());
+                                intent.putExtra("sex", sexes.getText().toString());
+                                intent.putExtra("Base64EncImage",encImage);
+
+
                                 startActivity(intent);
                             }
                         }
@@ -170,5 +226,21 @@ surfix1.setOnClickListener(new View.OnClickListener() {
     private static final String[] gender = new String[]{"Male","Female","3x a day"};
     private static final String[] surfix = new String[]{"Jr","Sr","III","N/A"};
     private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","DITO"};
+
+
+    ActivityResultLauncher<Intent> someActivityResultLaunchers = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                        urs2 = data.getData();
+                        idImage2.setImageURI(urs2);
+                    }
+                }
+            });
+
 
 }
