@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -209,8 +210,12 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                                 intent.putExtra("address", Address.getText().toString());
                                 intent.putExtra("networkProvider", SimNetwork.getText().toString());
                                 intent.putExtra("sex", sexes.getText().toString());
-                                intent.putExtra("Base64EncImage",encImage);
 
+
+                                SharedPreferences myPref = getSharedPreferences("ImageBase64",MODE_PRIVATE);
+                                SharedPreferences.Editor myPrefEdit = myPref.edit();
+                                myPrefEdit.putString("Base64Image",encImage);
+                                myPrefEdit.apply();
 
                                 startActivity(intent);
                             }

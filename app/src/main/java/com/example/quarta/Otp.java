@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,6 +45,7 @@ public class Otp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
 
+        SharedPreferences myPref = getSharedPreferences("ImageBase64",MODE_PRIVATE);
 
         String email = getIntent().getStringExtra("email");
         String password = getIntent().getStringExtra("password");
@@ -55,7 +57,7 @@ public class Otp extends AppCompatActivity {
         String number = getIntent().getStringExtra("mobile");
         String Address = getIntent().getStringExtra("address");
         String network = getIntent().getStringExtra("networkProvider");
-        String base64Image = getIntent().getStringExtra("Base64EncImage");
+        String base64Image = myPref.getString("Base64Image","");
 
 
 
