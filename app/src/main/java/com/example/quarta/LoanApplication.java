@@ -42,7 +42,8 @@ public class LoanApplication extends AppCompatActivity {
     EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
     Button send;
     AutoCompleteTextView cellularNetwork;
-    ImageView idImage;
+    ImageView idImage, buttonback;
+
     //AnimationDrawable wifiannim;*/
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -74,6 +75,16 @@ public class LoanApplication extends AppCompatActivity {
         monthlyNetIncome = findViewById(R.id.monthlyIncome);
         howKnowBank = findViewById(R.id.howClarenceBank);
         brokerCode = findViewById(R.id.brokerCode);
+        buttonback = findViewById(R.id.applybackbutton);
+
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HomeDashBoard.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 

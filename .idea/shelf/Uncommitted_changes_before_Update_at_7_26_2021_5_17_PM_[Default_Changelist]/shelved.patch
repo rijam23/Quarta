@@ -1,0 +1,293 @@
+Index: app/src/main/res/layout/activity_loan_application.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".LoanApplication\">\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\" >\r\n\r\n            <EditText\r\n                android:id=\"@+id/emailAdd\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Email\"\r\n                android:inputType=\"textEmailAddress\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/dataAccess\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Data Access?\"\r\n                 />\r\n\r\n            <EditText\r\n                android:id=\"@+id/loanamount\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Loan Amount\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/loanterm\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Loan Term\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/dateofbirth\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Date of Birth\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/sex\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Sex\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/suffix\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Suffix\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/lastname\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Last Name\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/firstname\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"First Name\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/middlename\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Middle Name\"\r\n                android:inputType=\"textPersonName\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/address\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Current Address\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/contactnumber\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Contact Number\"\r\n                android:inputType=\"number\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/cellnetwork\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Cellular Network\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <AutoCompleteTextView\r\n                android:id=\"@+id/autoCompleteTextView1\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:hint=\"Network Provider\"\r\n                android:layout_alignParentLeft=\"true\"\r\n                android:layout_below=\"@+id/textView1\"\r\n                android:ems=\"10\"\r\n                android:text=\"\">\r\n\r\n            </AutoCompleteTextView>\r\n\r\n            <EditText\r\n                android:id=\"@+id/fbname\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Facebook Name\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/purposeofborrowing\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Purpose for borrowing\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/sourceoffund\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Source of fund to repay\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/monthlyIncome\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Monthly Net Income\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/howClarenceBank\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"How did you get to know ClarenceBANK?\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/brokerCode\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:ems=\"10\"\r\n                android:hint=\"Broker Code\"\r\n                android:inputType=\"textPersonName\"\r\n                tools:layout_editor_absoluteX=\"100dp\"\r\n                tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n            <ImageView\r\n                android:id=\"@+id/idImage\"\r\n                android:layout_width=\"100dp\"\r\n                android:layout_height=\"100dp\"\r\n                app:srcCompat=\"@drawable/user\" />\r\n\r\n            <Button\r\n                android:id=\"@+id/submitBtn\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"SUBMIT\" />\r\n        </LinearLayout>\r\n    </ScrollView>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_loan_application.xml	(revision 2fc16c01dbae89deb8c935c672a861c27c2ad2d7)
++++ app/src/main/res/layout/activity_loan_application.xml	(date 1627287876242)
+@@ -4,23 +4,64 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".LoanApplication">
++    tools:context=".LoanApplication"
++    >
++
++    <View
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:background="#94D64F"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++    <ImageView
++        android:id="@+id/applybackbutton"
++        android:layout_width="30dp"
++        android:layout_height="30dp"
++        android:background="?attr/selectableItemBackgroundBorderless"
++        android:clickable="true"
++        android:src="@drawable/backbuttongreen"
++        android:layout_marginRight="325dp"
++        android:layout_marginTop="10dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++
++    <TextView
++        android:layout_marginTop="5dp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:fontFamily="@font/poppinsmedium"
++        android:gravity="center_horizontal"
++        android:text="Application Form"
++        android:textSize="25sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
+ 
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+ 
++
+         <LinearLayout
++        android:layout_marginTop="50dp"
+             android:layout_width="match_parent"
++            android:paddingLeft="20dp"
++            android:paddingRight="20dp"
++            android:layout_gravity="center_horizontal"
+             android:layout_height="wrap_content"
+             android:orientation="vertical" >
+ 
+             <EditText
+                 android:id="@+id/emailAdd"
++                android:drawableRight="@drawable/email_ic"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:ems="10"
+                 android:hint="Email"
++                android:backgroundTint="@color/green"
+                 android:inputType="textEmailAddress" />
+ 
+             <EditText
+@@ -28,6 +69,7 @@
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:ems="10"
++                android:backgroundTint="@color/green"
+                 android:hint="Data Access?"
+                  />
+ 
+@@ -35,6 +77,7 @@
+                 android:id="@+id/loanamount"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Loan Amount"
+                 android:inputType="textPersonName" />
+@@ -43,6 +86,7 @@
+                 android:id="@+id/loanterm"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Loan Term"
+                 android:inputType="textPersonName" />
+@@ -51,6 +95,7 @@
+                 android:id="@+id/dateofbirth"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Date of Birth"
+                 android:inputType="textPersonName" />
+@@ -59,6 +104,7 @@
+                 android:id="@+id/sex"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Sex"
+                 android:inputType="textPersonName" />
+@@ -67,6 +113,7 @@
+                 android:id="@+id/suffix"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Suffix"
+                 android:inputType="textPersonName" />
+@@ -75,6 +122,7 @@
+                 android:id="@+id/lastname"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Last Name"
+                 android:inputType="textPersonName" />
+@@ -83,6 +131,7 @@
+                 android:id="@+id/firstname"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="First Name"
+                 android:inputType="textPersonName" />
+@@ -91,6 +140,7 @@
+                 android:id="@+id/middlename"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Middle Name"
+                 android:inputType="textPersonName" />
+@@ -99,6 +149,7 @@
+                 android:id="@+id/address"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Current Address"
+                 android:inputType="textPersonName"
+@@ -109,6 +160,7 @@
+                 android:id="@+id/contactnumber"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Contact Number"
+                 android:inputType="number"
+@@ -119,6 +171,7 @@
+                 android:id="@+id/cellnetwork"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Cellular Network"
+                 android:inputType="textPersonName"
+@@ -129,6 +182,7 @@
+                 android:id="@+id/autoCompleteTextView1"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
++                android:backgroundTint="@color/green"
+                 android:hint="Network Provider"
+                 android:layout_alignParentLeft="true"
+                 android:layout_below="@+id/textView1"
+@@ -141,6 +195,7 @@
+                 android:id="@+id/fbname"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Facebook Name"
+                 android:inputType="textPersonName"
+@@ -151,6 +206,7 @@
+                 android:id="@+id/purposeofborrowing"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Purpose for borrowing"
+                 android:inputType="textPersonName"
+@@ -161,6 +217,7 @@
+                 android:id="@+id/sourceoffund"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Source of fund to repay"
+                 android:inputType="textPersonName"
+@@ -171,6 +228,7 @@
+                 android:id="@+id/monthlyIncome"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Monthly Net Income"
+                 android:inputType="textPersonName"
+@@ -181,8 +239,9 @@
+                 android:id="@+id/howClarenceBank"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+-                android:hint="How did you get to know ClarenceBANK?"
++                android:hint="How did you get to know Quarta?"
+                 android:inputType="textPersonName"
+                 tools:layout_editor_absoluteX="100dp"
+                 tools:layout_editor_absoluteY="54dp" />
+@@ -191,6 +250,7 @@
+                 android:id="@+id/brokerCode"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
++                android:backgroundTint="@color/green"
+                 android:ems="10"
+                 android:hint="Broker Code"
+                 android:inputType="textPersonName"
+Index: app/src/main/java/com/example/quarta/LoanApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.quarta;\r\n\r\nimport androidx.activity.result.ActivityResult;\r\nimport androidx.activity.result.ActivityResultCallback;\r\nimport androidx.activity.result.ActivityResultLauncher;\r\nimport androidx.activity.result.contract.ActivityResultContracts;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.Activity;\r\nimport android.app.DatePickerDialog;\r\nimport android.content.Intent;\r\nimport android.graphics.Bitmap;\r\nimport android.graphics.BitmapFactory;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.provider.MediaStore;\r\nimport android.util.Base64;\r\nimport android.view.View;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.AutoCompleteTextView;\r\nimport android.widget.Button;\r\nimport android.widget.DatePicker;\r\nimport android.widget.EditText;\r\nimport android.widget.ImageView;\r\nimport android.widget.Toast;\r\n\r\nimport java.io.ByteArrayOutputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.IOException;\r\nimport java.io.InputStream;\r\nimport java.util.Calendar;\r\n\r\nimport okhttp3.Call;\r\nimport okhttp3.Callback;\r\nimport okhttp3.MultipartBody;\r\nimport okhttp3.OkHttpClient;\r\nimport okhttp3.Request;\r\nimport okhttp3.RequestBody;\r\nimport okhttp3.Response;\r\n\r\npublic class LoanApplication extends AppCompatActivity {\r\n    EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;\r\n    Button send;\r\n    AutoCompleteTextView cellularNetwork;\r\n    ImageView idImage;\r\n    //AnimationDrawable wifiannim;*/\r\n    DatePickerDialog.OnDateSetListener setListener;\r\n\r\n    String[] language ={\"SMART\",\"GLOBE\",\"SUN\",\"DITO\",\"GOMO\"};\r\n\r\n    Uri urs = null;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_loan_application);\r\n\r\n        emailAdd = findViewById(R.id.emailAdd);\r\n        dataAccess = findViewById(R.id.dataAccess);\r\n        loanAmount = findViewById(R.id.loanamount);\r\n        loanTerm = findViewById(R.id.loanterm);\r\n        firstName = findViewById(R.id.firstname);\r\n        middleName = findViewById(R.id.middlename);\r\n        lastName = findViewById(R.id.lastname);\r\n        suffix = findViewById(R.id.suffix);\r\n        dateOfBirth = findViewById(R.id.dateofbirth);\r\n        sex = findViewById(R.id.sex);\r\n        currentAddress = findViewById(R.id.address);\r\n        contactNumber = findViewById(R.id.contactnumber);\r\n        cellularNetwork = findViewById(R.id.autoCompleteTextView1);\r\n        fbName = findViewById(R.id.fbname);\r\n        purposeBorrow = findViewById(R.id.purposeofborrowing);\r\n        sourceOfIncome = findViewById(R.id.sourceoffund);\r\n        monthlyNetIncome = findViewById(R.id.monthlyIncome);\r\n        howKnowBank = findViewById(R.id.howClarenceBank);\r\n        brokerCode = findViewById(R.id.brokerCode);\r\n\r\n\r\n\r\n\r\n        idImage = findViewById(R.id.idImage);\r\n\r\n\r\n        send = findViewById(R.id.submitBtn);\r\n\r\n\r\n        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, language);\r\n        //Find TextView control\r\n        AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);\r\n        //Set the number of characters the user must type before the drop down list is shown\r\n        acTextView.setThreshold(1);\r\n        //Set the adapter\r\n        acTextView.setAdapter(adapter);\r\n\r\n\r\n        Calendar calendar = Calendar.getInstance();\r\n        final int year = calendar.get(Calendar.YEAR);\r\n        final int month = calendar.get(Calendar.MONTH);\r\n        final int day = calendar.get(Calendar.DAY_OF_MONTH);\r\n\r\n        dateOfBirth.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                DatePickerDialog datePickerDialog = new DatePickerDialog(\r\n                        LoanApplication.this, new DatePickerDialog.OnDateSetListener() {\r\n                    @Override\r\n                    public void onDateSet(DatePicker view, int year, int month, int day) {\r\n                        month = month+1;\r\n                        String date = day+\"/\"+month+\"/\"+year;\r\n                        dateOfBirth.setText(date);\r\n                    }\r\n                },year,month,day);\r\n                datePickerDialog.show();\r\n\r\n            }\r\n        });\r\n\r\n\r\n        idImage.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);\r\n                //Intent intent = new Intent(uploadImageTest.this, pickpick.class);\r\n                someActivityResultLaunchers.launch(intent);\r\n            }\r\n        });\r\n        send.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                String a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t;\r\n                a = emailAdd.getText().toString();\r\n                b = dataAccess.getText().toString();\r\n                c = loanAmount.getText().toString();\r\n                d = loanTerm.getText().toString();\r\n                e = firstName.getText().toString();\r\n                f = middleName.getText().toString();\r\n                g = lastName.getText().toString();\r\n                h = suffix.getText().toString();\r\n                i = dateOfBirth.getText().toString();\r\n                j = sex.getText().toString();\r\n                k = currentAddress.getText().toString();\r\n                l = contactNumber.getText().toString();\r\n                m = cellularNetwork.getText().toString();\r\n                n = fbName.getText().toString();\r\n                o = purposeBorrow.getText().toString();\r\n                p = sourceOfIncome.getText().toString();\r\n                q = monthlyNetIncome.getText().toString();\r\n                r = howKnowBank.getText().toString();\r\n                s = brokerCode.getText().toString();\r\n\r\n\r\n                if (urs != null) {\r\n                    InputStream imageStream = null;\r\n\r\n                    try {\r\n                        imageStream = getContentResolver().openInputStream(urs);\r\n                    } catch (FileNotFoundException fileNotFoundException) {\r\n                        fileNotFoundException.printStackTrace();\r\n                    }\r\n                    Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);\r\n                    ByteArrayOutputStream baos = new ByteArrayOutputStream();\r\n                    selectedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);\r\n                    byte[] bytes = baos.toByteArray();\r\n                    String encImage = Base64.encodeToString(bytes, Base64.DEFAULT);\r\n                    try {\r\n\r\n                        String url = \"https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec\";\r\n                        OkHttpClient client = new OkHttpClient();\r\n                        Toast.makeText(LoanApplication.this, e, Toast.LENGTH_SHORT).show();\r\n                        RequestBody requestBody = new MultipartBody.Builder()\r\n                                .setType(MultipartBody.FORM)\r\n                                .addFormDataPart(\"action\", \"form\")\r\n                                .addFormDataPart(\"emailAdd\", a)\r\n                                .addFormDataPart(\"dataAccess\", b)\r\n                                .addFormDataPart(\"loanAmount\", c)\r\n                                .addFormDataPart(\"loanTerm\", d)\r\n                                .addFormDataPart(\"firstName\", e)\r\n                                .addFormDataPart(\"middleName\", f)\r\n                                .addFormDataPart(\"lastName\", g)\r\n                                .addFormDataPart(\"suffix\", h)\r\n                                .addFormDataPart(\"dateOfBirth\", i)\r\n                                .addFormDataPart(\"sex\", j)\r\n                                .addFormDataPart(\"currentAddress\", k)\r\n                                .addFormDataPart(\"contactNumber\", l)\r\n                                .addFormDataPart(\"cellularNetwork\", m)\r\n                                .addFormDataPart(\"fbName\", n)\r\n                                .addFormDataPart(\"purposeBorrow\", o)\r\n                                .addFormDataPart(\"sourceOfIncome\", p)\r\n                                .addFormDataPart(\"monthlyNetIncome\", q)\r\n                                .addFormDataPart(\"howKnowBank\", r)\r\n                                .addFormDataPart(\"brokerCode\", s)\r\n                                .addFormDataPart(\"idTypeImage\", encImage)\r\n                                .build();\r\n                        Request request = new Request.Builder()\r\n                                .url(url)\r\n                                .post(requestBody)\r\n                                .build();\r\n                        client.newCall(request).enqueue(new Callback() {\r\n                            @Override\r\n                            public void onFailure(Call call, IOException e) {\r\n                                //String mMessage = e.getMessage().toString();\r\n                                //Log.w(\"failure Response\", mMessage);\r\n                                //call.cancel();\r\n                            }\r\n\r\n                            @Override\r\n                            public void onResponse(Call call, Response response) throws IOException {\r\n                                String responseText = response.body().string();\r\n                                runOnUiThread(new Runnable() {\r\n                                    public void run() {\r\n                                        if (responseText.equals(\"Loan Success\")) {\r\n                                            Toast.makeText(LoanApplication.this, responseText, Toast.LENGTH_SHORT).show();\r\n                                            Intent intent = new Intent(getApplicationContext(), HomeDashBoard.class);\r\n                                            startActivity(intent);\r\n                                            //storing\r\n                                        } else {\r\n                                            Toast.makeText(LoanApplication.this,\"Error Comms\", Toast.LENGTH_SHORT).show();\r\n                                        }\r\n                                        //Toast.makeText(MainActivity.this, mMessage, Toast.LENGTH_SHORT).show();\r\n                                    }\r\n                                });\r\n                                //Log.e(TAG, mMessage);\r\n                            }\r\n                        });\r\n                    } catch (NullPointerException e1) {\r\n                        Toast.makeText(LoanApplication.this, \"Error\", Toast.LENGTH_SHORT).show();\r\n                    }\r\n                    //\r\n                } else {\r\n                    Toast.makeText(LoanApplication.this, \"Error Missing Image\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    ActivityResultLauncher<Intent> someActivityResultLaunchers = registerForActivityResult(\r\n            new ActivityResultContracts.StartActivityForResult(),\r\n            new ActivityResultCallback<ActivityResult>() {\r\n                @Override\r\n                public void onActivityResult(ActivityResult result) {\r\n                    if (result.getResultCode() == Activity.RESULT_OK) {\r\n                        // There are no request codes\r\n                        Intent data = result.getData();\r\n                        urs = data.getData();\r\n                        idImage.setImageURI(urs);\r\n                    }\r\n                }\r\n            });\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/quarta/LoanApplication.java	(revision 2fc16c01dbae89deb8c935c672a861c27c2ad2d7)
++++ app/src/main/java/com/example/quarta/LoanApplication.java	(date 1627287964852)
+@@ -42,7 +42,8 @@
+     EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
+     Button send;
+     AutoCompleteTextView cellularNetwork;
+-    ImageView idImage;
++    ImageView idImage, buttonback;
++
+     //AnimationDrawable wifiannim;*/
+     DatePickerDialog.OnDateSetListener setListener;
+ 
+@@ -74,6 +75,16 @@
+         monthlyNetIncome = findViewById(R.id.monthlyIncome);
+         howKnowBank = findViewById(R.id.howClarenceBank);
+         brokerCode = findViewById(R.id.brokerCode);
++        buttonback = findViewById(R.id.applybackbutton);
++
++        buttonback.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(getApplicationContext(),HomeDashBoard.class);
++                startActivity(intent);
++
++            }
++        });
+ 
+ 
+ 
+Index: app/src/main/res/layout/activity_sign_up.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".SignUp\">\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/linearLayout\"\r\n            android:layout_width=\"241dp\"\r\n            android:layout_height=\"133dp\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.27\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:layout_constraintVertical_bias=\"0.074\">\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"57dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"Create\"\r\n                android:textColor=\"@color/green\"\r\n                android:textSize=\"50sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"59dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"Account\"\r\n                android:textColor=\"@color/green\"\r\n                android:textSize=\"50sp\"\r\n                tools:layout_editor_absoluteX=\"0dp\"\r\n                tools:layout_editor_absoluteY=\"43dp\" />\r\n        </LinearLayout>\r\n\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/linearLayout2\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:orientation=\"vertical\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.505\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/linearLayout\">\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"28dp\"\r\n                android:orientation=\"horizontal\"\r\n                app:layout_constraintTop_toBottomOf=\"@+id/linearLayout\"\r\n                tools:layout_editor_absoluteX=\"44dp\">\r\n\r\n                <EditText\r\n                    android:id=\"@+id/firstName\"\r\n                    android:layout_width=\"150dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_gravity=\"start\"\r\n                    android:backgroundTint=\"@color/green\"\r\n                    android:hint=\"FIRST NAME\"\r\n                    android:textSize=\"20sp\" />\r\n\r\n                <EditText\r\n                    android:id=\"@+id/lastName\"\r\n                    android:layout_width=\"150dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_marginStart=\"20dp\"\r\n                    android:backgroundTint=\"@color/green\"\r\n                    android:hint=\"LAST NAME\"\r\n                    android:textSize=\"20sp\" />\r\n\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <AutoCompleteTextView\r\n                        android:id=\"@+id/surfixinput\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:backgroundTint=\"@color/green\"\r\n                        android:drawableRight=\"@drawable/dropdown\"\r\n                        android:hint=\"Surfix\"\r\n                        android:textSize=\"20sp\">\r\n\r\n                    </AutoCompleteTextView>\r\n\r\n                    <AutoCompleteTextView\r\n                        android:id=\"@+id/genderinput\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:backgroundTint=\"@color/green\"\r\n                        android:drawableRight=\"@drawable/dropdown\"\r\n                        android:hint=\"Sex\"\r\n                        android:textSize=\"20sp\">\r\n\r\n                    </AutoCompleteTextView>\r\n\r\n\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_marginStart=\"50dp\"\r\n                    android:gravity=\"center\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/idImageinput\"\r\n                        android:layout_width=\"75dp\"\r\n                        android:layout_height=\"75dp\"\r\n                        app:srcCompat=\"@drawable/user\" />\r\n\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_gravity=\"center_vertical\"\r\n                        android:text=\"Click to Upload Image\"\r\n                        android:textSize=\"10sp\"/>\r\n\r\n                </LinearLayout>\r\n            </LinearLayout>\r\n\r\n\r\n            <EditText\r\n                android:id=\"@+id/inputDateofBirth\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:backgroundTint=\"@color/green\"\r\n                android:drawableEnd=\"@drawable/calendar\"\r\n                android:hint=\"Date of Birth\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/Inputemail\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:backgroundTint=\"@color/green\"\r\n                android:drawableEnd=\"@drawable/email_ic\"\r\n                android:hint=\"Email Address\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/Inputadress\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:backgroundTint=\"@color/green\"\r\n                android:drawableEnd=\"@drawable/loc\"\r\n                android:hint=\"Complete Address\"\r\n                android:textSize=\"20sp\" />\r\n\r\n\r\n            <AutoCompleteTextView\r\n                android:id=\"@+id/networkproviderinput\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:backgroundTint=\"@color/green\"\r\n                android:drawableRight=\"@drawable/provide\"\r\n                android:hint=\"Network Provider\"\r\n                android:textSize=\"20sp\" />\r\n\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:text=\"+63\"\r\n                    android:textColor=\"@color/black\"\r\n                    android:textSize=\"20sp\" />\r\n\r\n                <EditText\r\n                    android:id=\"@+id/inputmobile\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:background=\"@null\"\r\n                    android:drawableRight=\"@drawable/phone\"\r\n                    android:hint=\" Mobile Number\"\r\n                    android:paddingRight=\"4dp\"\r\n                    android:textSize=\"20sp\" />\r\n\r\n\r\n            </LinearLayout>\r\n\r\n            <View\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"1dp\"\r\n                android:layout_marginLeft=\"3dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:layout_marginRight=\"5dp\"\r\n                android:background=\"@color/green\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/inputPassword\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:backgroundTint=\"@color/green\"\r\n                android:drawableEnd=\"@drawable/lock\"\r\n                android:hint=\"PASSWORD\"\r\n                android:textSize=\"20sp\" />\r\n\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginLeft=\"3dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"Password must be at least 8 characters and contain a number\"\r\n                android:textSize=\"9dp\" />\r\n        </LinearLayout>\r\n\r\n        <FrameLayout\r\n        android:id=\"@+id/frameLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"8dp\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/linearLayout2\"\r\n        tools:layout_editor_absoluteX=\"0dp\">\r\n\r\n        <ProgressBar\r\n            android:id=\"@+id/progressbar\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"33dp\"\r\n            android:layout_gravity=\"center\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/signupbutton\"\r\n            android:layout_width=\"312dp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"center_horizontal\"\r\n            android:backgroundTint=\"@color/green\"\r\n            android:text=\"SIGN UP\" />\r\n\r\n    </FrameLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayout3\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:gravity=\"center_horizontal\"\r\n        android:orientation=\"vertical\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/frameLayout\"\r\n        tools:layout_editor_absoluteX=\"0dp\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_horizontal\"\r\n            android:fontFamily=\"@font/poppinsmedium\"\r\n            android:text=\"By tapping ''Create Account'' you agree to\"\r\n            android:textSize=\"9sp\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:orientation=\"horizontal\">\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"our\"\r\n                android:textSize=\"9sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginLeft=\"3dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"Terms of Sevice\"\r\n                android:textColor=\"@color/green\"\r\n                android:textSize=\"9sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginLeft=\"3dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"and\"\r\n                android:textSize=\"9sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginLeft=\"3dp\"\r\n                android:fontFamily=\"@font/poppinsmedium\"\r\n                android:text=\"Privacy Policy\"\r\n                android:textColor=\"@color/green\"\r\n                android:textSize=\"9sp\" />\r\n        </LinearLayout>\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"28dp\"\r\n        android:gravity=\"center_horizontal\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/linearLayout3\"\r\n        tools:layout_editor_absoluteX=\"0dp\">\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:fontFamily=\"@font/poppinsmedium\"\r\n            android:text=\"Already have a\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"3dp\"\r\n            android:fontFamily=\"@font/poppinsmedium\"\r\n            android:text=\"Quarta\"\r\n            android:textColor=\"@color/green\" />\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"3dp\"\r\n            android:fontFamily=\"@font/poppinsmedium\"\r\n            android:text=\"Account?\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/signinbuttonlogin\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"4dp\"\r\n            android:fontFamily=\"@font/poppinsmedium\"\r\n            android:text=\"Sign In.\"\r\n            android:textColor=\"@color/green\" />\r\n\r\n\r\n    </LinearLayout>\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n    </ScrollView>\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_sign_up.xml	(revision 2fc16c01dbae89deb8c935c672a861c27c2ad2d7)
++++ app/src/main/res/layout/activity_sign_up.xml	(date 1627287138138)
+@@ -125,6 +125,8 @@
+                     android:layout_height="match_parent"
+                     android:layout_marginStart="50dp"
+                     android:gravity="center"
++                    android:background="?attr/selectableItemBackgroundBorderless"
++                    android:clickable="true"
+                     android:orientation="vertical">
+ 
+                     <ImageView
+@@ -345,6 +347,8 @@
+             android:text="Account?" />
+ 
+         <TextView
++            android:background="?attr/selectableItemBackgroundBorderless"
++            android:clickable="true"
+             android:id="@+id/signinbuttonlogin"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"

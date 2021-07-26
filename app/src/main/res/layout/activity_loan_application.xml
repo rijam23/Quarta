@@ -4,211 +4,276 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoanApplication">
+    tools:context=".LoanApplication"
+    >
+
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <LinearLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#94C65F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/appltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Application Form"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:id="@+id/applybackbutton"
+        android:src="@drawable/backbuttongreen"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toStartOf="@+id/appltext"
+        app:layout_constraintHorizontal_bias="0.271"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+android:layout_marginTop="20dp"
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintTop_toBottomOf="@id/appltext">
+
+        <EditText
+            android:id="@+id/emailAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:backgroundTint="@color/green"
+            android:drawableRight="@drawable/email_ic"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/emailAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/dataAccess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Data Access?" />
 
-            <EditText
-                android:id="@+id/dataAccess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Data Access?"
-                 />
+        <EditText
+            android:id="@+id/loanamount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Loan Amount"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/loanamount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Loan Amount"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/loanterm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Loan Term"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/loanterm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Loan Term"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/dateofbirth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Date of Birth"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/dateofbirth"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Date of Birth"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Sex"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/sex"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Sex"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/suffix"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Suffix"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/suffix"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Suffix"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/lastname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/lastname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Last Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/firstname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="First Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/middlename"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Middle Name"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/middlename"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Middle Name"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Current Address"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Current Address"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/contactnumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Contact Number"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/contactnumber"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Contact Number"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/cellnetwork"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Cellular Network"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/cellnetwork"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Cellular Network"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Network Provider"
+            android:text="">
 
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Network Provider"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textView1"
-                android:ems="10"
-                android:text="">
+        </AutoCompleteTextView>
 
-            </AutoCompleteTextView>
+        <EditText
+            android:id="@+id/fbname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Facebook Name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/fbname"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Facebook Name"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/purposeofborrowing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Purpose for borrowing"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/purposeofborrowing"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Purpose for borrowing"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/sourceoffund"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Source of fund to repay"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/sourceoffund"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Source of fund to repay"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/monthlyIncome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Monthly Net Income"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/monthlyIncome"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Monthly Net Income"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/howClarenceBank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="How did you get to know Quarta?"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/howClarenceBank"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="How did you get to know ClarenceBANK?"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <EditText
+            android:id="@+id/brokerCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/green"
+            android:ems="10"
+            android:hint="Broker Code"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="54dp" />
 
-            <EditText
-                android:id="@+id/brokerCode"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:hint="Broker Code"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="54dp" />
+        <ImageView
+            android:id="@+id/idImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/user" />
 
-            <ImageView
-                android:id="@+id/idImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:srcCompat="@drawable/user" />
-
-            <Button
-                android:id="@+id/submitBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SUBMIT" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
