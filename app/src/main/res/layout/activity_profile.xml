@@ -44,7 +44,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="James Galos"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
@@ -54,17 +54,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="09661939205"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:backgroundTint="@color/white"
-                android:indeterminate="true" />
 
             <TextView
                 android:layout_width="wrap_content"

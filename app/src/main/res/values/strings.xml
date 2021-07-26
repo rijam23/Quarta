@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">QuartaTestapk</string>
-<string-array name="networklist">
-    <item>SMART</item>
-    <item>GLOBE</item>
-    <item>SUN</item>
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>3x a day</item>
+    </string-array>
+
+    <string-array name="networklist">
+
+
+    <item>SMART/TNT/SUN</item>
+    <item>GLOBE/TM/GOMO</item>
     <item>DITO</item>
-    <item>GOMO</item>
 </string-array>
 </resources>

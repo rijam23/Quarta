@@ -81,5 +81,5 @@ public class QuarTalk extends AppCompatActivity {
         }
         win.setAttributes(Winparams);
     }
-    ////Transparent Status Bar
+
 }
