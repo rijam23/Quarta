@@ -39,7 +39,7 @@ public class PaymentHistory extends AppCompatActivity {
         String clientId = getIntent().getStringExtra("clientID");
 
 
-        String url = "https://script.google.com/macros/s/AKfycbwUSeL0IQ-0ntnvXmHNnDqn6ZxRRGABktwv8iiwPfXYmtJnxWRohMKjMVzQa73tdAA/exec";
+        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
 
         OkHttpClient client = new OkHttpClient();
 

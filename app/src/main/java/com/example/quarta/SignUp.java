@@ -78,7 +78,7 @@ public class SignUp extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), Otp.class);
                                 intent.putExtra("mobile",inputmobile.getText().toString());
                                 intent.putExtra("verificationId",verificationId);
-                                intent.putExtra("email",emailNum.getText().toString());
+                                intent.putExtra("email","'0"+emailNum.getText().toString());
                                 intent.putExtra("password",passWord.getText().toString());
                                 intent.putExtra("firstname",firstName.getText().toString());
                                 intent.putExtra("lastname",lastName.getText().toString());

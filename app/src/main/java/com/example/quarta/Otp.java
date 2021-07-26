@@ -262,7 +262,7 @@ public class Otp extends AppCompatActivity {
 
     public void postRequest(String signInEmailNum, String signInPassword, String firstname, String lastname) throws IOException {
         //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbwXlVXrGQphW-NJIWKYGgFu3ywdecO2uR9ikN55-BXLTZ7jGrZkb-yJ-EwR3ypd507_/exec";
+        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
 
         OkHttpClient client = new OkHttpClient();
 

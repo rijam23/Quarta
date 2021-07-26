@@ -45,7 +45,7 @@ public class Profile extends AppCompatActivity {
         number = sh.getString("number", "");
 
         getClientDetails(number,fullNameTv,"Full Name");
-        getClientDetails(number,numberTv,"Contact Number");
+        numberTv.setText(number);
 
         //Initialize And Assign Variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -74,7 +74,7 @@ public class Profile extends AppCompatActivity {
     }
     public void getClientDetails(String number,TextView tv,String data){
         final String[] toReturn = {""};
-        String url = "https://script.google.com/macros/s/AKfycbzTVgPgRkQl-ys4hT-pD0uYgpATgJhKqGXp5gyYkJCneu9HqjKOj6Bs91q_EXyS4aU/exec";
+        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
 
         OkHttpClient client = new OkHttpClient();
 
