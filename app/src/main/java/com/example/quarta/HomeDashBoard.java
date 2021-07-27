@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -37,6 +39,7 @@ public class HomeDashBoard extends AppCompatActivity {
     ImageView loanHistory;
     String number;
     String CLientID;
+    TextView greetings;
     @Override
     public void onBackPressed()
     {
@@ -56,6 +59,32 @@ public class HomeDashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_dash_board);
+
+
+        greetings = (TextView)findViewById(R.id.greet);
+
+        Calendar kalendaryo = Calendar.getInstance();
+
+        int james = kalendaryo.get(Calendar.HOUR_OF_DAY);
+
+        if(james >= 0 && james < 12) {
+            greetings.setText("Magandang Araw,");
+        }
+        else if(james >= 12 && james < 17) {
+            greetings.setText("Magandang Hapon,");
+        }
+        else if(james >= 17 && james < 24) {
+            greetings.setText("Magandang gabi,");
+        }
+        else{
+            greetings.setText("Kamusta ka,");
+        }
+
+
+
+
+
+
 
         SharedPreferences sh = getSharedPreferences("Client", MODE_PRIVATE);
 

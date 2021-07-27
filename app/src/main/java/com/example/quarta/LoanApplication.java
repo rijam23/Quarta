@@ -127,6 +127,13 @@ public class LoanApplication extends AppCompatActivity {
             }
         });
 
+        suffix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                suffix.showDropDown();
+            }
+        });
+
 
 
         buttonback.setOnClickListener(new View.OnClickListener() {

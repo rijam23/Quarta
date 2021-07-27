@@ -53,6 +53,7 @@ android:layout_marginTop="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         app:layout_constraintTop_toBottomOf="@id/appltext">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="133dp"
@@ -82,6 +83,11 @@ android:layout_marginTop="20dp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="43dp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -253,6 +259,8 @@ android:layout_marginTop="20dp"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="100dp"
             tools:layout_editor_absoluteY="54dp" />
+
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -284,12 +292,16 @@ android:layout_marginTop="20dp"
                 tools:layout_editor_absoluteY="43dp" />
         </LinearLayout>
 
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
         <RadioGroup
             android:id="@+id/rgDataAccess"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
