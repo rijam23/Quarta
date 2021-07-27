@@ -57,11 +57,11 @@ public class HomeDashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_dash_board);
 
-        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences sh = getSharedPreferences("Client", MODE_PRIVATE);
 
-        number = sh.getString("number", "");
+        number = sh.getString("Contact_Number", "");
 
-
+        Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
         getClientId(number);
         Toast.makeText(this, CLientID, Toast.LENGTH_SHORT).show();
         paymentHistory = findViewById(R.id.paymenthistoryIcon);
@@ -140,8 +140,7 @@ public class HomeDashBoard extends AppCompatActivity {
 
     public void getClientId(String number){
         final String[] toReturn = {""};
-        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
-
+        String url = "https://script.google.com/macros/s/AKfycbyQS-jzjGIM4P5z-DR1v6-uM78g-fSuh9HYCz2ULtAqc5hEhlxoSX02XV7-_4anHPk5/exec";
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
@@ -165,7 +164,12 @@ public class HomeDashBoard extends AppCompatActivity {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String txtResponse = response.body().string();
                 CLientID = txtResponse;
-
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(HomeDashBoard.this, txtResponse, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("clientID", CLientID);

@@ -3,6 +3,7 @@ package com.example.quarta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,8 +34,9 @@ public class PaymentHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_history);
         newLayout = findViewById(R.id.linearLayoutPayment);
+        SharedPreferences sf = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        String clientId = sf.getString("clientID","");
 
-        String clientId = getIntent().getStringExtra("clientID");
 
 
         String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";

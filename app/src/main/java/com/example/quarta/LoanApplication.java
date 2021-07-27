@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -55,6 +56,8 @@ public class LoanApplication extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_application);
+        SharedPreferences getShared = getSharedPreferences("Client",MODE_PRIVATE);
+
 
         emailAdd = findViewById(R.id.emailAdd);
         dataAccess = findViewById(R.id.dataAccess);
@@ -76,6 +79,29 @@ public class LoanApplication extends AppCompatActivity {
         howKnowBank = findViewById(R.id.howClarenceBank);
         brokerCode = findViewById(R.id.brokerCode);
         buttonback = findViewById(R.id.applybackbutton);
+        firstName.setText(getShared.getString("First_Name",""));
+        middleName.setText(getShared.getString("Middle_Name",""));
+        lastName.setText(getShared.getString("Last_Name",""));
+        suffix.setText(getShared.getString("Suffix",""));
+        dateOfBirth.setText(getShared.getString("Date_of_Birth",""));
+        sex.setText(getShared.getString("Sex",""));
+        contactNumber.setText(getShared.getString("Contact_Number",""));
+        cellularNetwork.setText(getShared.getString("Cellular_Network",""));
+        currentAddress.setText(getShared.getString("Address",""));
+        emailAdd.setText(getShared.getString("Email_Address",""));
+
+
+        /*editing.putString("First_Name",First_Name );
+        editing.putString("Middle_Name", Middle_Name);
+        editing.putString("Last_Name", Last_Name);
+        editing.putString("Suffix", Suffix);
+        editing.putString("Date_of_Birth", Date_of_Birth);
+        editing.putString("Sex", Sex);
+        editing.putString("Contact_Number", Contact_Number);
+        editing.putString("Cellular_Network", Cellular_Network);
+        editing.putString("Address", Address);
+        editing.putString("Email_Address", Email_Address);
+        editing.putString("Profile_Photo", Profile_Photo);*/
 
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,7 +201,7 @@ public class LoanApplication extends AppCompatActivity {
                     String encImage = Base64.encodeToString(bytes, Base64.DEFAULT);
                     try {
 
-                        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
+                        String url = "https://script.google.com/macros/s/AKfycbzQZCzNJT69cp4sQE57ihwbDNVsvLQwSSNPRPuDtDJiST68hMCLortXK79aVCKEOV42/exec";
                         OkHttpClient client = new OkHttpClient();
                         Toast.makeText(LoanApplication.this, e, Toast.LENGTH_SHORT).show();
                         RequestBody requestBody = new MultipartBody.Builder()

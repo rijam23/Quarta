@@ -40,12 +40,11 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         fullNameTv = findViewById(R.id.fullname);
         numberTv = findViewById(R.id.contactNumber);
-        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences getShared = getSharedPreferences("Client", MODE_PRIVATE);
+        fullNameTv.setText(getShared.getString("First_Name","")+getShared.getString("Middle_Name","")+getShared.getString("Last_Name",""));
 
-        number = sh.getString("number", "");
 
-        getClientDetails(number,fullNameTv,"Full Name");
-        numberTv.setText(number);
+        numberTv.setText(getShared.getString("Contact_Number",""));
 
         //Initialize And Assign Variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -74,7 +73,7 @@ public class Profile extends AppCompatActivity {
     }
     public void getClientDetails(String number,TextView tv,String data){
         final String[] toReturn = {""};
-        String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzs3JUnXvDZzN2PgPar9Rf4dRzKI-SuSdMG5UKCmcWRy9mX5liL81jMJ3QPH8n2fkI/exec";
 
         OkHttpClient client = new OkHttpClient();
 

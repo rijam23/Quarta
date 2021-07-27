@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     String signInEmailNum = emailNum.getText().toString();
                     String signInPassword = password.getText().toString();
                     //postRequest(emailNum.getText().toString(),password.getText().toString());
-                    String url = "https://script.google.com/macros/s/AKfycbwkSWufp6iNVO3khzOJPnQ3GO_WBbLDxvqSQ01C3uwBO678rCtfthZI5Xkc2fdK_pp9/exec";
+                    String url = "https://script.google.com/macros/s/AKfycbz17cvcFuontel7Bzxn9rorUBqOeKl_8AaIIv1E79OdhwMxiHt_RcXpLqCYJAnm87Ku/exec";
 
                     OkHttpClient client = new OkHttpClient();
 
@@ -83,27 +87,61 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call call, Response response) throws IOException {
                             try {
                                 String responseText = response.body().string();
+                                if(responseText.equals("Errors")){
 
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        if (responseText.equals("Login Success")) {
-                                            Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(), HomeDashBoard.class);
-                                            startActivity(intent);
-                                            //storing
-                                            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-                                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                                            myEdit.putString("number", "0"+signInEmailNum);
-                                            myEdit.apply();
-                                        } else {
-                                            Toast.makeText(MainActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            try {
+                                                JSONObject jsonObject = new JSONObject(responseText);
+                                                JSONArray cast = jsonObject.getJSONArray("item");
+                                                for (int i = 0; i < cast.length(); i++) {
+                                                    JSONObject actor = cast.getJSONObject(i);
+
+                                                    String First_Name = actor.getString("First Name");
+                                                    String Middle_Name = actor.getString("Middle Name");
+                                                    String Last_Name = actor.getString("Last Name");
+                                                    String Suffix = actor.getString("Suffix");
+                                                    String Date_of_Birth = actor.getString("Date of Birth");
+                                                    String Sex = actor.getString("Sex");
+                                                    String Contact_Number = actor.getString("Contact Number");
+                                                    String Cellular_Network = actor.getString("Cellular Network");
+                                                    String Address = actor.getString("Address");
+                                                    String Email_Address = actor.getString("Email Address");
+                                                    String Profile_Photo = actor.getString("Profile Photo");
+                                                    Toast.makeText(MainActivity.this, First_Name+Middle_Name+Last_Name+Suffix+Date_of_Birth, Toast.LENGTH_SHORT).show();
+                                                    SharedPreferences clientPref = getSharedPreferences("Client",MODE_PRIVATE);
+                                                    SharedPreferences.Editor editing = clientPref.edit();
+                                                    editing.putString("First_Name",First_Name );
+                                                    editing.putString("Middle_Name", Middle_Name);
+                                                    editing.putString("Last_Name", Last_Name);
+                                                    editing.putString("Suffix", Suffix);
+                                                    editing.putString("Date_of_Birth", Date_of_Birth);
+                                                    editing.putString("Sex", Sex);
+                                                    editing.putString("Contact_Number", Contact_Number);
+                                                    editing.putString("Cellular_Network", Cellular_Network);
+                                                    editing.putString("Address", Address);
+                                                    editing.putString("Email_Address", Email_Address);
+                                                    editing.putString("Profile_Photo", Profile_Photo);
+                                                    editing.apply();
+                                                    Intent intent = new Intent(MainActivity.this,HomeDashBoard.class);
+                                                    startActivity(intent);
+
+
+                                                }
+                                            }catch (JSONException e){
+
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+
+                                }
+
+
                             } catch (NullPointerException e) {
                                 Log.e("Error", String.valueOf(e));
                             }
-
                         }
                     });
                 } catch (RuntimeException e) {
