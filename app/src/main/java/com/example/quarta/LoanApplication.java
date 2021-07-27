@@ -40,9 +40,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoanApplication extends AppCompatActivity {
-    EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName, suffix, dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
+    EditText emailAdd, dataAccess, loanAmount, loanTerm, firstName, middleName, lastName,  dateOfBirth, sex, currentAddress, contactNumber,  fbName, purposeBorrow, sourceOfIncome, monthlyNetIncome, howKnowBank, brokerCode;
     Button send;
-    AutoCompleteTextView cellularNetwork;
+    AutoCompleteTextView cellularNetwork,suffix;
     ImageView idImage, buttonback;
 
     //AnimationDrawable wifiannim;*/
@@ -106,6 +106,9 @@ public class LoanApplication extends AppCompatActivity {
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,Cellularnet);
         cellularNetwork.setAdapter(adapter2);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,surfix);
+        suffix.setAdapter(adapter);
 
         cellularNetwork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,6 +279,7 @@ public class LoanApplication extends AppCompatActivity {
         });
     }
     private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","DITO"};
+    private static final String[] surfix = new String[]{"Jr","Sr","III","N/A"};
 
     ActivityResultLauncher<Intent> someActivityResultLaunchers = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

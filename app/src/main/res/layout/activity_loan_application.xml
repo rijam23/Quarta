@@ -122,7 +122,8 @@ android:layout_marginTop="20dp"
                 android:inputType="textPersonName" />
 
 
-            <EditText
+            <AutoCompleteTextView
+                android:drawableRight="@drawable/dropdown"
                 android:id="@+id/suffix"
                 android:layout_width="150dp"
                 android:layout_marginStart="70dp"

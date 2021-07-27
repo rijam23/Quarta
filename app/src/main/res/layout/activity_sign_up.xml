@@ -122,6 +122,33 @@
 
 
             </LinearLayout>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sex"
+                    android:layout_marginStart="3dp"
+                    android:textSize="18sp"/>
+                <RadioButton
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Male"/>
+                <RadioButton
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Female"/>
+                <RadioButton
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Non-binary"/>
+
+            </RadioGroup>
 
             <AutoCompleteTextView
                 android:id="@+id/genderinput"
