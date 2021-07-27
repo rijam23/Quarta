@@ -4,6 +4,8 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -14,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
@@ -23,6 +26,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -44,6 +49,12 @@ public class LoanApplication extends AppCompatActivity {
     Button send;
     AutoCompleteTextView cellularNetwork,suffix;
     ImageView idImage, buttonback;
+    String encImage;
+    RadioGroup rg;
+    RadioButton rdBtn;
+
+    RadioGroup rgDataAccess;
+    RadioButton rdBtnDataAccess;
 
     //AnimationDrawable wifiannim;*/
     DatePickerDialog.OnDateSetListener setListener;
@@ -52,15 +63,22 @@ public class LoanApplication extends AppCompatActivity {
 
     Uri urs = null;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_application);
         SharedPreferences getShared = getSharedPreferences("Client",MODE_PRIVATE);
 
+        rg = findViewById(R.id.groupSex);
+
+        rgDataAccess = findViewById(R.id.rgDataAccess);
+
 
         emailAdd = findViewById(R.id.emailAdd);
-        dataAccess = findViewById(R.id.dataAccess);
+
         loanAmount = findViewById(R.id.loanamount);
         loanTerm = findViewById(R.id.loanterm);
         firstName = findViewById(R.id.firstname);
@@ -68,7 +86,7 @@ public class LoanApplication extends AppCompatActivity {
         lastName = findViewById(R.id.lastname);
         suffix = findViewById(R.id.suffix);
         dateOfBirth = findViewById(R.id.dateofbirth);
-        sex = findViewById(R.id.sex);
+
         currentAddress = findViewById(R.id.address);
         contactNumber = findViewById(R.id.contactnumber);
         cellularNetwork = findViewById(R.id.autoCompleteTextView1);
@@ -84,24 +102,16 @@ public class LoanApplication extends AppCompatActivity {
         lastName.setText(getShared.getString("Last_Name",""));
         suffix.setText(getShared.getString("Suffix",""));
         dateOfBirth.setText(getShared.getString("Date_of_Birth",""));
-        sex.setText(getShared.getString("Sex",""));
+
         contactNumber.setText(getShared.getString("Contact_Number",""));
         cellularNetwork.setText(getShared.getString("Cellular_Network",""));
         currentAddress.setText(getShared.getString("Address",""));
         emailAdd.setText(getShared.getString("Email_Address",""));
 
 
-        /*editing.putString("First_Name",First_Name );
-        editing.putString("Middle_Name", Middle_Name);
-        editing.putString("Last_Name", Last_Name);
-        editing.putString("Suffix", Suffix);
-        editing.putString("Date_of_Birth", Date_of_Birth);
-        editing.putString("Sex", Sex);
-        editing.putString("Contact_Number", Contact_Number);
-        editing.putString("Cellular_Network", Cellular_Network);
-        editing.putString("Address", Address);
-        editing.putString("Email_Address", Email_Address);
-        editing.putString("Profile_Photo", Profile_Photo);*/
+
+
+
 
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,Cellularnet);
@@ -152,7 +162,7 @@ public class LoanApplication extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month+1;
-                        String date = day+"/"+month+"/"+year;
+                        String date = month+"/"+day+"/"+year;
                         dateOfBirth.setText(date);
                     }
                 },year,month,day);
@@ -174,8 +184,13 @@ public class LoanApplication extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t;
+                int ids = rg.getCheckedRadioButtonId();
+                rdBtn = findViewById(ids);
+                int optionsDataAccess = rgDataAccess.getCheckedRadioButtonId();
+                rdBtnDataAccess = findViewById(optionsDataAccess);
+
                 a = emailAdd.getText().toString();
-                b = dataAccess.getText().toString();
+                b = rdBtnDataAccess.getText().toString();
                 c = loanAmount.getText().toString();
                 d = loanTerm.getText().toString();
                 e = firstName.getText().toString();
@@ -183,7 +198,7 @@ public class LoanApplication extends AppCompatActivity {
                 g = lastName.getText().toString();
                 h = suffix.getText().toString();
                 i = dateOfBirth.getText().toString();
-                j = sex.getText().toString();
+                j = rdBtn.getText().toString();
                 k = currentAddress.getText().toString();
                 l = contactNumber.getText().toString();
                 m = cellularNetwork.getText().toString();
@@ -207,10 +222,10 @@ public class LoanApplication extends AppCompatActivity {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     selectedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
                     byte[] bytes = baos.toByteArray();
-                    String encImage = Base64.encodeToString(bytes, Base64.DEFAULT);
+                    encImage = Base64.encodeToString(bytes, Base64.DEFAULT);
                     try {
 
-                        String url = "https://script.google.com/macros/s/AKfycbzQZCzNJT69cp4sQE57ihwbDNVsvLQwSSNPRPuDtDJiST68hMCLortXK79aVCKEOV42/exec";
+                        String url = "https://script.google.com/macros/s/AKfycbyYkQ2wtm2neBKkL-F4ESKxsxA8ibNs7yoiDJtQAnDeFXmP2L0pfHWnEav7bxe4w0Y-/exec";
                         OkHttpClient client = new OkHttpClient();
                         Toast.makeText(LoanApplication.this, e, Toast.LENGTH_SHORT).show();
                         RequestBody requestBody = new MultipartBody.Builder()
@@ -227,7 +242,7 @@ public class LoanApplication extends AppCompatActivity {
                                 .addFormDataPart("dateOfBirth", i)
                                 .addFormDataPart("sex", j)
                                 .addFormDataPart("currentAddress", k)
-                                .addFormDataPart("contactNumber", l)
+                                .addFormDataPart("contactNumber", "0"+l)
                                 .addFormDataPart("cellularNetwork", m)
                                 .addFormDataPart("fbName", n)
                                 .addFormDataPart("purposeBorrow", o)
@@ -291,9 +306,13 @@ public class LoanApplication extends AppCompatActivity {
                         Intent data = result.getData();
                         urs = data.getData();
                         idImage.setImageURI(urs);
+
+
                     }
                 }
             });
+
+
 
 }
 

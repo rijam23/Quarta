@@ -92,7 +92,7 @@
 
 
                 <EditText
-                    android:id="@+id/middleName"
+                    android:id="@+id/middleNameSignUp"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
@@ -122,44 +122,42 @@
 
 
             </LinearLayout>
+
             <RadioGroup
+                android:id="@+id/sexGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sex"
                     android:layout_marginStart="3dp"
-                    android:textSize="18sp"/>
+                    android:text="Sex"
+                    android:textSize="18sp" />
+
                 <RadioButton
-                    android:layout_marginStart="10dp"
+                    android:id="@+id/sex1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Male"/>
-                <RadioButton
                     android:layout_marginStart="10dp"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/sex2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Female"/>
-                <RadioButton
                     android:layout_marginStart="10dp"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:id="@+id/sex3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Non-binary"/>
+                    android:layout_marginStart="10dp"
+                    android:text="Non-binary" />
 
             </RadioGroup>
-
-            <AutoCompleteTextView
-                android:id="@+id/genderinput"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
-                android:drawableRight="@drawable/dropdown"
-                android:hint="Sex"
-                android:textSize="20sp">
-
-            </AutoCompleteTextView>
 
             <EditText
                 android:id="@+id/inputDateofBirth"

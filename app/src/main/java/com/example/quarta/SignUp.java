@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
@@ -24,6 +25,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,20 +43,25 @@ import java.util.concurrent.TimeUnit;
 public class SignUp extends AppCompatActivity {
     AutoCompleteTextView surfixInpuT;
     TextView signupbtn;
-    EditText firstName,  lastName, sexes, dateOfBirth, emailAdd, Address, SimNetwork, Number, passWord;
+    EditText firstName, middleName, lastName, sexes, dateOfBirth, emailAdd, Address, SimNetwork, Number, passWord;
     Button createAcc;
     ImageView idImage2;
     Uri urs2;
     String encImage;
+    RadioGroup rgSex;
+    RadioButton rgBtnSex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+
+        rgSex = findViewById(R.id.sexGroup);
+        middleName = findViewById(R.id.middleNameSignUp);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
-        sexes = findViewById(R.id.genderinput);
+
         dateOfBirth = findViewById(R.id.inputDateofBirth);
         emailAdd = findViewById(R.id.Inputemail);
         Address = findViewById(R.id.Inputadress);
@@ -73,34 +81,23 @@ public class SignUp extends AppCompatActivity {
         });
 
 
+        AutoCompleteTextView surfix1 = (AutoCompleteTextView) findViewById(R.id.surfixinput);
+        AutoCompleteTextView cell1 = (AutoCompleteTextView) findViewById(R.id.networkproviderinput);
 
 
-        AutoCompleteTextView gender1 =(AutoCompleteTextView)findViewById(R.id.genderinput);
-        AutoCompleteTextView surfix1 =(AutoCompleteTextView)findViewById(R.id.surfixinput);
-        AutoCompleteTextView cell1 =(AutoCompleteTextView)findViewById(R.id.networkproviderinput);
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,gender);
-        gender1.setAdapter(adapter);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,surfix);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, surfix);
         surfix1.setAdapter(adapter1);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,Cellularnet);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Cellularnet);
         cell1.setAdapter(adapter2);
 
 
-
-surfix1.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        surfix1.showDropDown();
-    }
-});
-        gender1.setOnClickListener(new View.OnClickListener() {
+        surfix1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gender1.showDropDown();
+                surfix1.showDropDown();
             }
         });
+
 
         cell1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +105,6 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                 cell1.showDropDown();
             }
         });
-
 
 
         Calendar calendar = Calendar.getInstance();
@@ -125,7 +121,7 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
+                        String date = month + "/" + day + "/" + year;
                         dateOfBirth.setText(date);
                     }
                 }, year, month, day);
@@ -144,6 +140,13 @@ surfix1.setOnClickListener(new View.OnClickListener() {
         buttonOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int lods=rgSex.getCheckedRadioButtonId();
+                rgBtnSex = findViewById(lods);
+
+                Toast.makeText(SignUp.this, String.valueOf(lods), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SignUp.this, String.valueOf(sexId), Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(SignUp.this, rgBtnSex.getText().toString(), Toast.LENGTH_SHORT).show();
                 if (urs2 != null) {
                     InputStream imageStream = null;
 
@@ -157,12 +160,10 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                     selectedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
                     byte[] bytes = baos.toByteArray();
                     encImage = Base64.encodeToString(bytes, Base64.DEFAULT);
-                }else{
+                } else {
                     Toast.makeText(SignUp.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-
 
 
                 if (inputmobile.getText().toString().trim().isEmpty()) {
@@ -199,22 +200,27 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                                 progressBar.setVisibility(View.GONE);
                                 buttonOTP.setVisibility(View.VISIBLE);
                                 Intent intent = new Intent(getApplicationContext(), Otp.class);
+
+
+
+
                                 intent.putExtra("verificationId", verificationId);
                                 intent.putExtra("mobile", inputmobile.getText().toString());
                                 intent.putExtra("email", emailAdd.getText().toString());
                                 intent.putExtra("password", passWord.getText().toString());
                                 intent.putExtra("firstname", firstName.getText().toString());
+                                intent.putExtra("middlename",middleName.getText().toString());
                                 intent.putExtra("lastname", lastName.getText().toString());
-                                intent.putExtra("suffix",surfixInpuT.getText().toString());
-                                intent.putExtra("dateOfBirth",dateOfBirth.getText().toString());
+                                intent.putExtra("suffix", surfixInpuT.getText().toString());
+                                intent.putExtra("dateOfBirth", dateOfBirth.getText().toString());
                                 intent.putExtra("address", Address.getText().toString());
                                 intent.putExtra("networkProvider", SimNetwork.getText().toString());
-                                intent.putExtra("sex", sexes.getText().toString());
+                                intent.putExtra("sex", rgBtnSex.getText().toString());
 
 
-                                SharedPreferences myPref = getSharedPreferences("ImageBase64",MODE_PRIVATE);
+                                SharedPreferences myPref = getSharedPreferences("ImageBase64", MODE_PRIVATE);
                                 SharedPreferences.Editor myPrefEdit = myPref.edit();
-                                myPrefEdit.putString("Base64Image",encImage);
+                                myPrefEdit.putString("Base64Image", encImage);
                                 myPrefEdit.apply();
 
                                 startActivity(intent);
@@ -228,9 +234,10 @@ surfix1.setOnClickListener(new View.OnClickListener() {
 
 
     }
-    private static final String[] gender = new String[]{"Male","Female","Non-binary"};
-    private static final String[] surfix = new String[]{"Jr","Sr","III","N/A"};
-    private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","DITO"};
+
+    private static final String[] gender = new String[]{"Male", "Female", "Non-binary"};
+    private static final String[] surfix = new String[]{"Jr", "Sr", "III", "N/A"};
+    private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN", "GLOBE/TM/GOMO", "DITO"};
 
 
     ActivityResultLauncher<Intent> someActivityResultLaunchers = registerForActivityResult(
@@ -246,6 +253,14 @@ surfix1.setOnClickListener(new View.OnClickListener() {
                     }
                 }
             });
+
+    private void disableEditText(EditText editText) {
+        editText.setFocusable(false);
+        editText.setEnabled(false);
+        editText.setCursorVisible(false);
+        editText.setKeyListener(null);
+        editText.setBackgroundColor(Color.TRANSPARENT);
+    }
 
 
 }

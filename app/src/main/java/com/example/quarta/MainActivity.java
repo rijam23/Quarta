@@ -3,6 +3,7 @@ package com.example.quarta;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -36,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
     EditText emailNum;
     EditText password;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
         setContentView(R.layout.activity_main);
         signin_button = findViewById(R.id.signinbutton);
         textsignup = findViewById(R.id.signupactbutton);
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     String signInEmailNum = emailNum.getText().toString();
                     String signInPassword = password.getText().toString();
                     //postRequest(emailNum.getText().toString(),password.getText().toString());
-                    String url = "https://script.google.com/macros/s/AKfycbz17cvcFuontel7Bzxn9rorUBqOeKl_8AaIIv1E79OdhwMxiHt_RcXpLqCYJAnm87Ku/exec";
+                    String url = "https://script.google.com/macros/s/AKfycbyYkQ2wtm2neBKkL-F4ESKxsxA8ibNs7yoiDJtQAnDeFXmP2L0pfHWnEav7bxe4w0Y-/exec";
 
                     OkHttpClient client = new OkHttpClient();
 

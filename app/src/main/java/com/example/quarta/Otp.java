@@ -51,6 +51,7 @@ public class Otp extends AppCompatActivity {
         String password = getIntent().getStringExtra("password");
         String firstname = getIntent().getStringExtra("firstname");
         String lastname = getIntent().getStringExtra("lastname");
+        String middlename = getIntent().getStringExtra("middlename");
         String suffix = getIntent().getStringExtra("suffix");
         String sex = getIntent().getStringExtra("sex");
         String dateOfBirth = getIntent().getStringExtra("dateOfBirth");
@@ -110,7 +111,7 @@ public class Otp extends AppCompatActivity {
                                     buttonVerify.setVisibility(View.VISIBLE);
                                     if(task.isSuccessful()){
                                         try {
-                                            postRequest(email,password,firstname,lastname,suffix,sex,dateOfBirth,number,Address,network,base64Image);
+                                            postRequest(email,password,firstname,lastname,middlename,suffix,sex,dateOfBirth,number,Address,network,base64Image);
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -273,7 +274,7 @@ public class Otp extends AppCompatActivity {
     public void postRequest(String signInEmailNum,
                             String signInPassword,
                             String firstname,
-                            String lastname,
+                            String lastname,String middlename,
                             String suffix,
                             String sex,
                             String dateOfBirth,
@@ -282,7 +283,7 @@ public class Otp extends AppCompatActivity {
                             String network,
                             String base64Image) throws IOException {
         //Toast.makeText(MainActivity.this, signInEmailNum+signInPassword, Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbz17cvcFuontel7Bzxn9rorUBqOeKl_8AaIIv1E79OdhwMxiHt_RcXpLqCYJAnm87Ku/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzbZcIYHAsNQdjs3uyUTvNL1O6kamME2N474zQEiBSXXnpiiOUvNtuDAWlrYz18DENX/exec";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -293,6 +294,7 @@ public class Otp extends AppCompatActivity {
                 .addFormDataPart("password", signInPassword)
                 .addFormDataPart("firstName", firstname)
                 .addFormDataPart("lastName",lastname)
+                .addFormDataPart("middleName",middlename)
                 .addFormDataPart("suffix", suffix)
                 .addFormDataPart("sex", sex)
                 .addFormDataPart("dateOfBirth", dateOfBirth)

@@ -140,7 +140,7 @@ public class HomeDashBoard extends AppCompatActivity {
 
     public void getClientId(String number){
         final String[] toReturn = {""};
-        String url = "https://script.google.com/macros/s/AKfycbyQS-jzjGIM4P5z-DR1v6-uM78g-fSuh9HYCz2ULtAqc5hEhlxoSX02XV7-_4anHPk5/exec";
+        String url = "https://script.google.com/macros/s/AKfycbzbZcIYHAsNQdjs3uyUTvNL1O6kamME2N474zQEiBSXXnpiiOUvNtuDAWlrYz18DENX/exec";
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()

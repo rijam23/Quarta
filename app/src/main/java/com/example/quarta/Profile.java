@@ -1,20 +1,30 @@
 package com.example.quarta;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.os.StrictMode;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MultipartBody;
@@ -34,15 +44,33 @@ public class Profile extends AppCompatActivity {
     TextView fullNameTv;
     TextView numberTv;
     String number;
+    CircleImageView clientImage;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy gfgPolicy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(gfgPolicy);
+        }
         fullNameTv = findViewById(R.id.fullname);
         numberTv = findViewById(R.id.contactNumber);
         SharedPreferences getShared = getSharedPreferences("Client", MODE_PRIVATE);
-        fullNameTv.setText(getShared.getString("First_Name","")+getShared.getString("Middle_Name","")+getShared.getString("Last_Name",""));
+        fullNameTv.setText(getShared.getString("First_Name","")+" "+getShared.getString("Middle_Name","")+" "+getShared.getString("Last_Name",""));
+        clientImage = findViewById(R.id.profile_image);
+        fullNameTv.setTextSize(20);
 
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(getShared.getString("Profile_Photo","")).getContent());
+            clientImage.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         numberTv.setText(getShared.getString("Contact_Number",""));
 
@@ -55,7 +83,7 @@ public class Profile extends AppCompatActivity {
         //Perform ItemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected( MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.homeicon:
                         startActivity(new Intent(getApplicationContext(),HomeDashBoard.class));
@@ -71,42 +99,6 @@ public class Profile extends AppCompatActivity {
             }
         });
     }
-    public void getClientDetails(String number,TextView tv,String data){
-        final String[] toReturn = {""};
-        String url = "https://script.google.com/macros/s/AKfycbzs3JUnXvDZzN2PgPar9Rf4dRzKI-SuSdMG5UKCmcWRy9mX5liL81jMJ3QPH8n2fkI/exec";
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("action","fetchData")
-                .addFormDataPart("number",number)
-                .addFormDataPart("data",data)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String txtResponse = response.body().string();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tv.setText(txtResponse);
-                    }
-                });
 
 
-            }
-        });
-
-    };
 }

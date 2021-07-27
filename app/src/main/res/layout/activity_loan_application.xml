@@ -138,41 +138,44 @@ android:layout_marginTop="20dp"
         </LinearLayout>
 
         <RadioGroup
+            android:id="@+id/groupSex"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Sex"
-    android:layout_marginStart="3dp"
-    android:textSize="18sp"/>
-            <RadioButton
-                android:layout_marginStart="10dp"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Male"/>
+                android:layout_marginStart="3dp"
+                android:text="Sex"
+                android:textSize="18sp" />
+
             <RadioButton
-                android:layout_marginStart="10dp"
+                android:id="@+id/idMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Female"/>
-            <RadioButton
                 android:layout_marginStart="10dp"
+                android:hint="Male"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/idFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Non-binary"/>
+                android:layout_marginStart="10dp"
+                android:hint="Female"
+                android:text="Female" />
+
+            <RadioButton
+                android:id="@+id/idNonBinary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="Non-binary"
+                android:text="Non-binary" />
 
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/sex"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/green"
-            android:ems="10"
-            android:hint="Sex"
-            android:inputType="textPersonName" />
         <EditText
             android:id="@+id/dateofbirth"
             android:drawableRight="@drawable/calendar"
@@ -283,35 +286,33 @@ android:layout_marginTop="20dp"
 
 
         <RadioGroup
+            android:id="@+id/rgDataAccess"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data Access?"
-                android:textSize="18sp"
                 android:layout_marginStart="3dp"
-              />
+                android:text="Data Access?"
+                android:textSize="18sp" />
+
             <RadioButton
+                android:id="@+id/rdBtnYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:hint="Yes"/>
+                android:hint="Yes" />
+
             <RadioButton
-                android:layout_marginStart="10dp"
+                android:id="@+id/rdBtnNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="No"/>
+                android:layout_marginStart="10dp"
+                android:hint="No" />
 
         </RadioGroup>
-        <EditText
-            android:id="@+id/dataAccess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
-            android:ems="10"
-            android:hint="Data Access?" />
 
         <EditText
             android:id="@+id/loanamount"
