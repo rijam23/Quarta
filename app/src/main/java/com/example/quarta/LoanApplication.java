@@ -103,6 +103,19 @@ public class LoanApplication extends AppCompatActivity {
         editing.putString("Email_Address", Email_Address);
         editing.putString("Profile_Photo", Profile_Photo);*/
 
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,Cellularnet);
+        cellularNetwork.setAdapter(adapter2);
+
+        cellularNetwork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cellularNetwork.showDropDown();
+            }
+        });
+
+
+
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,13 +134,6 @@ public class LoanApplication extends AppCompatActivity {
         send = findViewById(R.id.submitBtn);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, language);
-        //Find TextView control
-        AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
-        //Set the number of characters the user must type before the drop down list is shown
-        acTextView.setThreshold(1);
-        //Set the adapter
-        acTextView.setAdapter(adapter);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -269,6 +275,7 @@ public class LoanApplication extends AppCompatActivity {
             }
         });
     }
+    private static final String[] Cellularnet = new String[]{"SMART/TNT/SUN","GLOBE/TM/GOMO","DITO"};
 
     ActivityResultLauncher<Intent> someActivityResultLaunchers = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
