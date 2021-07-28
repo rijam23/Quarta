@@ -2,8 +2,12 @@ package com.example.quarta;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.StrictMode;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -39,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+
         setContentView(R.layout.activity_main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         signin_button = findViewById(R.id.signinbutton);
         textsignup = findViewById(R.id.signupactbutton);
         emailNum = findViewById(R.id.loginmobiletext);
@@ -75,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     RequestBody requestBody = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
                             .addFormDataPart("action", "login")
-                            .addFormDataPart("number", "0"+signInEmailNum)
+                            .addFormDataPart("number", "0" + signInEmailNum)
                             .addFormDataPart("password", signInPassword)
                             .build();
                     Request request = new Request.Builder()
@@ -92,10 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call call, Response response) throws IOException {
                             try {
                                 String responseText = response.body().string();
-                                if(responseText.equals("Errors")){
+                                if (responseText.equals("Errors")) {
 
-                                }
-                                else{
+                                } else {
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             try {
@@ -115,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
                                                     String Address = actor.getString("Address");
                                                     String Email_Address = actor.getString("Email Address");
                                                     String Profile_Photo = actor.getString("Profile Photo");
-                                                    Toast.makeText(MainActivity.this, First_Name+Middle_Name+Last_Name+Suffix+Date_of_Birth, Toast.LENGTH_SHORT).show();
-                                                    SharedPreferences clientPref = getSharedPreferences("Client",MODE_PRIVATE);
+                                                    Toast.makeText(MainActivity.this, First_Name + Middle_Name + Last_Name + Suffix + Date_of_Birth, Toast.LENGTH_SHORT).show();
+                                                    SharedPreferences clientPref = getSharedPreferences("Client", MODE_PRIVATE);
                                                     SharedPreferences.Editor editing = clientPref.edit();
-                                                    editing.putString("First_Name",First_Name );
+                                                    editing.putString("First_Name", First_Name);
                                                     editing.putString("Middle_Name", Middle_Name);
                                                     editing.putString("Last_Name", Last_Name);
                                                     editing.putString("Suffix", Suffix);
@@ -129,14 +137,36 @@ public class MainActivity extends AppCompatActivity {
                                                     editing.putString("Address", Address);
                                                     editing.putString("Email_Address", Email_Address);
                                                     editing.putString("Profile_Photo", Profile_Photo);
+
+
+
+
+                                                        Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(Profile_Photo).getContent());
+                                                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                                                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                                                        byte[] byteArray = byteArrayOutputStream.toByteArray();
+                                                        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                                                        editing.putString("Base64_Photo", encoded);
+
+                                                        Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
                                                     editing.apply();
-                                                    Intent intent = new Intent(MainActivity.this,HomeDashBoard.class);
+                                                    Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
                                                     startActivity(intent);
 
 
                                                 }
-                                            }catch (JSONException e){
+                                            } catch (JSONException e) {
 
+                                            } catch (MalformedURLException e) {
+                                                e.printStackTrace();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
                                             }
                                         }
                                     });
@@ -155,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public String md5(String s) {
         try {
             // Create MD5 Hash
@@ -164,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Create Hex String
             StringBuffer hexString = new StringBuffer();
-            for (int i=0; i<messageDigest.length; i++)
+            for (int i = 0; i < messageDigest.length; i++)
                 hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
             return hexString.toString();
 
