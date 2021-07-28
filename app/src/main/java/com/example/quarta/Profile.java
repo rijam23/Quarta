@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.StrictMode;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,11 +54,9 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy gfgPolicy =
-                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(gfgPolicy);
-        }
+        StrictMode.ThreadPolicy gfgPolicy =
+                new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(gfgPolicy);
         fullNameTv = findViewById(R.id.fullname);
         numberTv = findViewById(R.id.contactNumber);
         SharedPreferences getShared = getSharedPreferences("Client", MODE_PRIVATE);
@@ -66,9 +65,10 @@ public class Profile extends AppCompatActivity {
         fullNameTv.setTextSize(20);
 
         try {
-            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(getShared.getString("Profile_Photo","")).getContent());
-            clientImage.setImageBitmap(bitmap);
-        } catch (IOException e) {
+            byte[] decodedString = Base64.decode(getShared.getString("Base64_Photo",""), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            clientImage.setImageBitmap(decodedByte);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -39,7 +39,8 @@ public class HomeDashBoard extends AppCompatActivity {
     ImageView loanHistory;
     String number;
     String CLientID;
-    TextView greetings;
+    TextView greetings,nameGreet;
+
     @Override
     public void onBackPressed()
     {
@@ -89,6 +90,8 @@ public class HomeDashBoard extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences("Client", MODE_PRIVATE);
 
         number = sh.getString("Contact_Number", "");
+        nameGreet = findViewById(R.id.namegreet);
+        nameGreet.setText(sh.getString("First_Name",""));
 
         Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
         getClientId(number);
