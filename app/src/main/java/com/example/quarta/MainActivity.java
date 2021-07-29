@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
         signin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 try {
                     String signInEmailNum = emailNum.getText().toString();
                     String signInPassword = password.getText().toString();

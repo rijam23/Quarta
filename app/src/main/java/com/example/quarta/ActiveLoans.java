@@ -41,7 +41,7 @@ public class ActiveLoans extends AppCompatActivity {
         String clientID = sf.getString("clientID","");
         Toast.makeText(this, clientID, Toast.LENGTH_SHORT).show();
         Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
-        String url = "https://script.google.com/macros/s/AKfycbzbZcIYHAsNQdjs3uyUTvNL1O6kamME2N474zQEiBSXXnpiiOUvNtuDAWlrYz18DENX/exec";
+        String url = "https://script.google.com/macros/s/AKfycbxJH_ts5JKQmF6kXmolDkVwj90Ak_NFa0_nkqf7-5AGv6axDcvREkez123Vn73wLStM/exec";
 
         OkHttpClient client = new OkHttpClient();
 
