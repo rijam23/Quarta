@@ -123,6 +123,7 @@ public class SignUp extends AppCompatActivity {
                         month = month + 1;
                         String date = month + "/" + day + "/" + year;
                         dateOfBirth.setText(date);
+                        Toast.makeText(SignUp.this, dateOfBirth.getText().toString(), Toast.LENGTH_SHORT).show();
                     }
                 }, year, month, day);
                 datePickerDialog.show();
