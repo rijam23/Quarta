@@ -13,6 +13,7 @@ import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.util.Base64;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,12 +48,13 @@ public class Profile extends AppCompatActivity {
     String number;
     CircleImageView clientImage;
 
-
+    TextView logoutTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        logoutTxt = findViewById(R.id.logoutTxtViewBtn);
 
         StrictMode.ThreadPolicy gfgPolicy =
                 new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -98,7 +100,44 @@ public class Profile extends AppCompatActivity {
                 return false;
             }
         });
+        logoutTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences logOutPref2 = getSharedPreferences("IsLogged",MODE_PRIVATE);
+                SharedPreferences.Editor editDelete2 = logOutPref2.edit();
+                editDelete2.clear();
+                editDelete2.apply();
+
+                SharedPreferences logOutPref = getSharedPreferences("Client",MODE_PRIVATE);
+                SharedPreferences.Editor editDelete = logOutPref.edit();
+                /*editDelete.putString("First_Name", "");
+                editDelete.putString("Middle_Name", "");
+                editDelete.putString("Last_Name", "");
+                editDelete.putString("Suffix", "");
+                editDelete.putString("Date_of_Birth", "");
+                editDelete.putString("Sex", "");
+                editDelete.putString("Contact_Number", "");
+                editDelete.putString("Cellular_Network", "");
+                editDelete.putString("Address", "");
+                editDelete.putString("Email_Address", "");
+                editDelete.putString("Profile_Photo", "");
+                editDelete.putString("Base64_Photo", "");
+                editDelete.apply();*/
+                editDelete.clear();
+                editDelete.apply();
+
+                Toast.makeText(Profile.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Profile.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                startActivity(intent);
+
+            }
+        });
+
     }
+
 
 
 }

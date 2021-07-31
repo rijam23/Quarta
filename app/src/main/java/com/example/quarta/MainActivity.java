@@ -52,89 +52,98 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        signin_button = findViewById(R.id.signinbutton);
-        textsignup = findViewById(R.id.signupactbutton);
-        emailNum = findViewById(R.id.loginmobiletext);
-        password = findViewById(R.id.loginpasstext);
+
+        SharedPreferences checkPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
+
+        String number = checkPref.getString("LoseNumber","");
+        if(number.equals("88789")){
+            Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
+            startActivity(intent2);
+        }
+        else{
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            signin_button = findViewById(R.id.signinbutton);
+            textsignup = findViewById(R.id.signupactbutton);
+            emailNum = findViewById(R.id.loginmobiletext);
+            password = findViewById(R.id.loginpasstext);
 
 
-        textsignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignUp.class);
-                startActivity(intent);
-            }
-        });
+            textsignup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
+                    startActivity(intent);
+                }
+            });
 
-        signin_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    String signInEmailNum = emailNum.getText().toString();
-                    String signInPassword = password.getText().toString();
-                    //postRequest(emailNum.getText().toString(),password.getText().toString());
-                    String url = "https://script.google.com/macros/s/AKfycbyYkQ2wtm2neBKkL-F4ESKxsxA8ibNs7yoiDJtQAnDeFXmP2L0pfHWnEav7bxe4w0Y-/exec";
+            signin_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        String signInEmailNum = emailNum.getText().toString();
+                        String signInPassword = password.getText().toString();
+                        //postRequest(emailNum.getText().toString(),password.getText().toString());
+                        String url = "https://script.google.com/macros/s/AKfycbyYkQ2wtm2neBKkL-F4ESKxsxA8ibNs7yoiDJtQAnDeFXmP2L0pfHWnEav7bxe4w0Y-/exec";
 
-                    OkHttpClient client = new OkHttpClient();
+                        OkHttpClient client = new OkHttpClient();
 
-                    RequestBody requestBody = new MultipartBody.Builder()
-                            .setType(MultipartBody.FORM)
-                            .addFormDataPart("action", "login")
-                            .addFormDataPart("number", "0" + signInEmailNum)
-                            .addFormDataPart("password", signInPassword)
-                            .build();
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .post(requestBody)
-                            .build();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            Log.w("failure Response", e);
-                        }
+                        RequestBody requestBody = new MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("action", "login")
+                                .addFormDataPart("number", "0" + signInEmailNum)
+                                .addFormDataPart("password", signInPassword)
+                                .build();
+                        Request request = new Request.Builder()
+                                .url(url)
+                                .post(requestBody)
+                                .build();
+                        client.newCall(request).enqueue(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.w("failure Response", e);
+                            }
 
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            try {
-                                String responseText = response.body().string();
-                                if (responseText.equals("Errors")) {
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                try {
+                                    String responseText = response.body().string();
+                                    if (responseText.equals("Errors")) {
 
-                                } else {
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            try {
-                                                JSONObject jsonObject = new JSONObject(responseText);
-                                                JSONArray cast = jsonObject.getJSONArray("item");
-                                                for (int i = 0; i < cast.length(); i++) {
-                                                    JSONObject actor = cast.getJSONObject(i);
+                                    } else {
+                                        runOnUiThread(new Runnable() {
+                                            public void run() {
+                                                try {
+                                                    JSONObject jsonObject = new JSONObject(responseText);
+                                                    JSONArray cast = jsonObject.getJSONArray("item");
+                                                    for (int i = 0; i < cast.length(); i++) {
+                                                        JSONObject actor = cast.getJSONObject(i);
 
-                                                    String First_Name = actor.getString("First Name");
-                                                    String Middle_Name = actor.getString("Middle Name");
-                                                    String Last_Name = actor.getString("Last Name");
-                                                    String Suffix = actor.getString("Suffix");
-                                                    String Date_of_Birth = actor.getString("Date of Birth");
-                                                    String Sex = actor.getString("Sex");
-                                                    String Contact_Number = actor.getString("Contact Number");
-                                                    String Cellular_Network = actor.getString("Cellular Network");
-                                                    String Address = actor.getString("Address");
-                                                    String Email_Address = actor.getString("Email Address");
-                                                    String Profile_Photo = actor.getString("Profile Photo");
-                                                    Toast.makeText(MainActivity.this, First_Name + Middle_Name + Last_Name + Suffix + Date_of_Birth, Toast.LENGTH_SHORT).show();
-                                                    SharedPreferences clientPref = getSharedPreferences("Client", MODE_PRIVATE);
-                                                    SharedPreferences.Editor editing = clientPref.edit();
-                                                    editing.putString("First_Name", First_Name);
-                                                    editing.putString("Middle_Name", Middle_Name);
-                                                    editing.putString("Last_Name", Last_Name);
-                                                    editing.putString("Suffix", Suffix);
-                                                    editing.putString("Date_of_Birth", Date_of_Birth);
-                                                    editing.putString("Sex", Sex);
-                                                    editing.putString("Contact_Number", Contact_Number);
-                                                    editing.putString("Cellular_Network", Cellular_Network);
-                                                    editing.putString("Address", Address);
-                                                    editing.putString("Email_Address", Email_Address);
-                                                    editing.putString("Profile_Photo", Profile_Photo);
+                                                        String First_Name = actor.getString("First Name");
+                                                        String Middle_Name = actor.getString("Middle Name");
+                                                        String Last_Name = actor.getString("Last Name");
+                                                        String Suffix = actor.getString("Suffix");
+                                                        String Date_of_Birth = actor.getString("Date of Birth");
+                                                        String Sex = actor.getString("Sex");
+                                                        String Contact_Number = actor.getString("Contact Number");
+                                                        String Cellular_Network = actor.getString("Cellular Network");
+                                                        String Address = actor.getString("Address");
+                                                        String Email_Address = actor.getString("Email Address");
+                                                        String Profile_Photo = actor.getString("Profile Photo");
+                                                        Toast.makeText(MainActivity.this, First_Name + Middle_Name + Last_Name + Suffix + Date_of_Birth, Toast.LENGTH_SHORT).show();
+                                                        SharedPreferences clientPref = getSharedPreferences("Client", MODE_PRIVATE);
+                                                        SharedPreferences.Editor editing = clientPref.edit();
+                                                        editing.putString("First_Name", First_Name);
+                                                        editing.putString("Middle_Name", Middle_Name);
+                                                        editing.putString("Last_Name", Last_Name);
+                                                        editing.putString("Suffix", Suffix);
+                                                        editing.putString("Date_of_Birth", Date_of_Birth);
+                                                        editing.putString("Sex", Sex);
+                                                        editing.putString("Contact_Number", Contact_Number);
+                                                        editing.putString("Cellular_Network", Cellular_Network);
+                                                        editing.putString("Address", Address);
+                                                        editing.putString("Email_Address", Email_Address);
+                                                        editing.putString("Profile_Photo", Profile_Photo);
 
 
 
@@ -153,35 +162,45 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                                                    editing.apply();
-                                                    Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
-                                                    startActivity(intent);
+                                                        editing.apply();
+                                                        SharedPreferences LoggedPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
+                                                        SharedPreferences.Editor LoggedEdit = LoggedPref.edit();
+                                                        LoggedEdit.putString("LoseNumber","88789");
+                                                        LoggedEdit.apply();
+
+                                                        Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
+                                                        startActivity(intent);
 
 
+                                                    }
+                                                } catch (JSONException e) {
+
+                                                } catch (MalformedURLException e) {
+                                                    e.printStackTrace();
+                                                } catch (IOException e) {
+                                                    e.printStackTrace();
                                                 }
-                                            } catch (JSONException e) {
-
-                                            } catch (MalformedURLException e) {
-                                                e.printStackTrace();
-                                            } catch (IOException e) {
-                                                e.printStackTrace();
                                             }
-                                        }
-                                    });
+                                        });
 
+                                    }
+
+
+                                } catch (NullPointerException e) {
+                                    Log.e("Error", String.valueOf(e));
                                 }
-
-
-                            } catch (NullPointerException e) {
-                                Log.e("Error", String.valueOf(e));
                             }
-                        }
-                    });
-                } catch (RuntimeException e) {
-                    Log.e("Error", String.valueOf(e));
+                        });
+                    } catch (RuntimeException e) {
+                        Log.e("Error", String.valueOf(e));
+                    }
                 }
-            }
-        });
+            });
+
+
+        }
+
+
     }
 
     public String md5(String s) {

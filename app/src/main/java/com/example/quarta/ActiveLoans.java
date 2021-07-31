@@ -1,6 +1,7 @@
 package com.example.quarta;
 
 //import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -37,8 +38,8 @@ public class ActiveLoans extends AppCompatActivity {
         setContentView(R.layout.activity_active_loans);
 
         newLayout = findViewById(R.id.utangslayout);
-        SharedPreferences sf = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        String clientID = sf.getString("clientID","");
+        SharedPreferences sf = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        String clientID = sf.getString("clientID", "");
         Toast.makeText(this, clientID, Toast.LENGTH_SHORT).show();
         Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
         String url = "https://script.google.com/macros/s/AKfycbxJH_ts5JKQmF6kXmolDkVwj90Ak_NFa0_nkqf7-5AGv6axDcvREkez123Vn73wLStM/exec";
@@ -87,8 +88,6 @@ public class ActiveLoans extends AppCompatActivity {
                                 matchWrap.setMargins(20, 10, 20, 10);
 
 
-
-
                                 CardView cardview = new CardView(getApplicationContext());
                                 cardview.setLayoutParams(matchWrap);
                                 cardview.setRadius(10);
@@ -117,10 +116,10 @@ public class ActiveLoans extends AppCompatActivity {
                                 tvStatus.setText(status);
                                 tvStatus.setTextColor(getResources().getColor(R.color.green));
                                 tvStatus.setTextSize(20);
-                                tvStatus.setPadding(0,0,5,0);
+                                tvStatus.setPadding(0, 0, 5, 0);
                                 TextView tvStatus1 = new TextView(getApplicationContext());
                                 tvStatus1.setText("         Status:                    ");
-                                tvStatus1.setPadding(5,0,0,0);
+                                tvStatus1.setPadding(5, 0, 0, 0);
                                 tvStatus1.setTextSize(20);
 
                                 TextView tvAmount = new TextView(getApplicationContext());
@@ -158,9 +157,7 @@ public class ActiveLoans extends AppCompatActivity {
                                 cardview.addView(newLinear);
 
 
-
                                 newLayout.addView(cardview);
-
 
 
                             }
