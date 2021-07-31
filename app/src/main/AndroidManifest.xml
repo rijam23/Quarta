@@ -15,7 +15,7 @@
         <activity android:name="com.example.quarta.PaymentHistory" />
         <activity android:name="com.example.quarta.ActiveLoans" />
         <activity android:name="com.example.quarta.Profile" />
-        <activity android:name="com.example.quarta.QuarTalk" />
+        <activity android:name="com.example.quarta.QuarTalk" ></activity>
         <activity android:name="com.example.quarta.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

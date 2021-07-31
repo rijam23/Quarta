@@ -26,10 +26,10 @@
                 android:src="@drawable/notificon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.784"
+                app:layout_constraintHorizontal_bias="0.775"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.001" />
+                app:layout_constraintVertical_bias="0.041" />
 
             <ImageView
                 android:layout_width="45dp"
@@ -67,13 +67,13 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.033" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="232dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="108dp"
+                android:layout_marginTop="116dp"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="right"
                 android:text="Get small loans from Php 1 000.00 to Php 20 000.00 at a monthly interest rate of ONLY 10%."
@@ -81,7 +81,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.804"
+                app:layout_constraintHorizontal_bias="0.815"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -97,10 +97,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                 <TextView
+                    android:id="@+id/greet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
-                    android:id="@+id/greet"
                     android:text="Magandang Araw"
                     android:textSize="15sp" />
 
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="Marites"
+                    android:text=""
                     android:textSize="15sp" />
 
 
@@ -121,7 +121,7 @@
                 android:layout_width="226dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="84dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="84dp"
                 android:backgroundTint="@color/green"
                 android:fontFamily="@font/poppinsmedium"
@@ -130,6 +130,7 @@
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.47"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -137,7 +138,7 @@
                 android:id="@+id/linearLayout7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/applybutton"
