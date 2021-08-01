@@ -156,9 +156,7 @@ public class ActiveLoans extends AppCompatActivity {
 
                                 cardview.addView(newLinear);
 
-
                                 newLayout.addView(cardview);
-
 
                             }
 
