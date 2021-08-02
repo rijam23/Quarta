@@ -9,8 +9,8 @@
     <string-array name="networklist">
 
 
-    <item>SMART/TNT/SUN</item>
-    <item>GLOBE/TM/GOMO</item>
-    <item>DITO</item>
-</string-array>
+        <item>SMART/TNT/SUN</item>
+        <item>GLOBE/TM/GOMO</item>
+        <item>DITO</item>
+    </string-array>
 </resources>

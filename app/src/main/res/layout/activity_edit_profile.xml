@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfile">
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/arrowbackk" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="25sp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:text="Edit Profile"
+    android:fontFamily="@font/poppinsmedium"/>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="10dp"
+
+            android:src="@drawable/check_24" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardone"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+       android:backgroundTint="@color/green"
+
+        app:layout_constraintTop_toBottomOf="@id/linear1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/account"
+            android:layout_gravity="center"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:backgroundTint="#9E000000"
+            android:layout_gravity="bottom"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Tap to edit Profile Picture"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/grey"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cardone"
+        android:orientation="vertical">
+
+        <EditText
+            android:hint="First name"
+            android:drawableLeft="@drawable/outline_perm_identity_24"
+            android:drawableRight="@drawable/frontrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
+
+        <EditText
+            android:hint="Middle name"
+            android:drawableLeft="@drawable/outline_perm_identity_24"            android:drawableRight="@drawable/frontrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
+        <EditText
+            android:hint="Last name"
+               android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/outline_perm_identity_24"
+            android:drawableRight="@drawable/frontrow"
+            android:backgroundTint="@android:color/transparent"/>
+        <EditText
+            android:id="@+id/surfixEdit"
+            android:hint="Surfix"
+            android:drawableRight="@drawable/frontrow"
+            android:drawableLeft="@drawable/outline_perm_identity_24"            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
+        <EditText
+            android:hint="Address"
+            android:drawableLeft="@drawable/loc"
+            android:drawableRight="@drawable/frontrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
+        <EditText
+            android:id="@+id/dateofbirthEdit"
+            android:hint="Date of Birth"
+            android:drawableRight="@drawable/frontrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/calendar"
+            android:backgroundTint="@android:color/transparent"/>
+        <EditText
+            android:hint="Password"
+            android:inputType="textWebPassword"
+            android:drawableLeft="@drawable/lock"
+            android:drawableRight="@drawable/frontrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
