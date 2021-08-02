@@ -16,20 +16,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/editbackbutton"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/arrowbackk" />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="25sp"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:text="Edit Profile"
-    android:fontFamily="@font/poppinsmedium"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Edit Profile"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <ImageView
             android:id="@+id/applyChanges"
@@ -46,7 +45,7 @@
         android:id="@+id/cardone"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-       android:backgroundTint="@color/green"
+        android:backgroundTint="@color/green"
 
         app:layout_constraintTop_toBottomOf="@id/linear1">
 
