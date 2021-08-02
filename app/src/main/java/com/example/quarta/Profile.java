@@ -65,6 +65,13 @@ public class Profile extends AppCompatActivity {
         fullNameTv.setText(getShared.getString("First_Name","")+" "+getShared.getString("Middle_Name","")+" "+getShared.getString("Last_Name",""));
         clientImage = findViewById(R.id.profile_image);
         fullNameTv.setTextSize(20);
+        clientImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, EditProfile.class);
+                startActivity(intent);
+            }
+        });
 
         try {
             byte[] decodedString = Base64.decode(getShared.getString("Base64_Photo",""), Base64.DEFAULT);

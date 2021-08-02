@@ -253,7 +253,7 @@ public class LoanApplication extends AppCompatActivity {
                                 .addFormDataPart("dateOfBirth", i)
                                 .addFormDataPart("sex", j)
                                 .addFormDataPart("currentAddress", k)
-                                .addFormDataPart("contactNumber", "0"+l)
+                                .addFormDataPart("contactNumber", "'"+l)
                                 .addFormDataPart("cellularNetwork", m)
                                 .addFormDataPart("fbName", n)
                                 .addFormDataPart("purposeBorrow", o)
