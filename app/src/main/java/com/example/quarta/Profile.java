@@ -100,6 +100,14 @@ public class Profile extends AppCompatActivity {
                 return false;
             }
         });
+
+        clientImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),EditProfile.class);
+                startActivity(intent);
+            }
+        });
         logoutTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

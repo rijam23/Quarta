@@ -3,18 +3,21 @@ package com.example.quarta;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class EditProfile extends AppCompatActivity {
 EditText dateofbirthh;
+ImageView backbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,7 @@ EditText dateofbirthh;
 
 
        dateofbirthh = findViewById(R.id.dateofbirthEdit);
+       backbutton = findViewById(R.id.editbackbutton);
 
         AutoCompleteTextView surfix1 = (AutoCompleteTextView) findViewById(R.id.surfixinput);
 
@@ -31,6 +35,13 @@ EditText dateofbirthh;
         surfix1.setAdapter(adapter1);
 
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Profile.class);
+                startActivity(intent);
+            }
+        });
 
         surfix1.setOnClickListener(new View.OnClickListener() {
             @Override

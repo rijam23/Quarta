@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="Qscore"
+                android:text="Tap to Edit Profile"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>
