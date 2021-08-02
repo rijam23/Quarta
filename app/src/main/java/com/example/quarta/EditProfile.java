@@ -108,7 +108,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editData(emailAdd,"First Name",edFirstname.getText().toString());
-                editData(emailAdd,"Middle Name",edLastname.getText().toString());
+                editData(emailAdd,"Middle Name",edMiddlename.getText().toString());
                 editData(emailAdd,"Last Name",edLastname.getText().toString());
                 editData(emailAdd,"Suffix",surfix1.getText().toString());
                 editData(emailAdd,"Address",edAddress.getText().toString());
