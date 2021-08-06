@@ -3,6 +3,7 @@
     package="com.example.quarta">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:roundIcon="@drawable/quartalogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quarta">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".EditProfile" />
         <activity android:name=".LoanApplication" />
         <activity android:name=".PaymentHistory" />
         <activity android:name=".ActiveLoans" />

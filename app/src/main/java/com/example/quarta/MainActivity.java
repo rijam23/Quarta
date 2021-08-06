@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import androidx.biometric.BiometricPrompt;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.StrictMode;
@@ -15,8 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.core.content.ContextCompat;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.Executor;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,7 +47,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button signin_button;
+    Button signin_button,signin_button2;
     TextView textsignup;
     EditText emailNum;
     EditText password;
@@ -52,22 +58,103 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        signin_button = findViewById(R.id.signinbutton);
+        signin_button2 = findViewById(R.id.signinbutton2);
+        textsignup = findViewById(R.id.signupactbutton);
+        emailNum = findViewById(R.id.loginmobiletext);
+        password = findViewById(R.id.loginpasstext);
 
 
         SharedPreferences checkPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
 
         String number = checkPref.getString("LoseNumber","");
         if(number.equals("88789")){
-            Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
-            startActivity(intent2);
+            ///
+            // creating a variable for our BiometricManager
+            // and lets check if our user can use biometric sensor or not
+            BiometricManager biometricManager = androidx.biometric.BiometricManager.from(this);
+            switch (biometricManager.canAuthenticate()) {
+
+                // this means we can use biometric sensor
+                case BiometricManager.BIOMETRIC_SUCCESS:
+                    //signin_button.setText("Log In with Fingerprint");
+                   //msgtex.setText("You can use the fingerprint sensor to login");
+                    //msgtex.setTextColor(Color.parseColor("#fafafa"));
+                    break;
+
+                // this means that the device doesn't have fingerprint sensor
+                case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                    signin_button2.setVisibility(View.GONE);
+                    //msgtex.setText("This device doesnot have a fingerprint sensor");
+                    //loginbutton.setVisibility(View.GONE);
+                    break;
+
+                // this means that biometric sensor is not available
+                case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                    signin_button2.setVisibility(View.GONE);
+                    //msgtex.setText("The biometric sensor is currently unavailable");
+                    //loginbutton.setVisibility(View.GONE);
+                    break;
+
+                // this means that the device doesn't contain your fingerprint
+                case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                    signin_button2.setVisibility(View.GONE);
+                    //msgtex.setText("Your device doesn't have fingerprint saved,please check your security settings");
+                    //loginbutton.setVisibility(View.GONE);
+                    break;
+            }
+            // creating a variable for our Executor
+            Executor executor = ContextCompat.getMainExecutor(this);
+            // this will give us result of AUTHENTICATION
+            final BiometricPrompt biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                    super.onAuthenticationError(errorCode, errString);
+                }
+
+                // THIS METHOD IS CALLED WHEN AUTHENTICATION IS SUCCESS
+                @Override
+                public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                    super.onAuthenticationSucceeded(result);
+                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
+                    startActivity(intent2);
+                    //loginbutton.setText("Login Successful");
+                }
+                @Override
+                public void onAuthenticationFailed() {
+                    super.onAuthenticationFailed();
+                }
+            });
+            // creating a variable for our promptInfo
+            // BIOMETRIC DIALOG
+            final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle("LogIn to Quarta Using Fingerprint")
+                    .setDescription("Use your fingerprint to login ").setNegativeButtonText("Cancel").build();
+
+            signin_button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    biometricPrompt.authenticate(promptInfo);
+
+                }
+            });
+            signin_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PostData();
+                }
+            });
+
+            ///
+            /*Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
+            startActivity(intent2);*/
         }
         else{
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
-            signin_button = findViewById(R.id.signinbutton);
-            textsignup = findViewById(R.id.signupactbutton);
-            emailNum = findViewById(R.id.loginmobiletext);
-            password = findViewById(R.id.loginpasstext);
+
+
+            signin_button2.setVisibility(View.GONE);
 
 
             textsignup.setOnClickListener(new View.OnClickListener() {
@@ -81,119 +168,7 @@ public class MainActivity extends AppCompatActivity {
             signin_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try {
-                        String signInEmailNum = emailNum.getText().toString();
-                        String signInPassword = password.getText().toString();
-                        //postRequest(emailNum.getText().toString(),password.getText().toString());
-                        String url = "https://script.google.com/macros/s/AKfycby-EJdFayXO07cWGBIHukZx8xQSNgPbdJlJe3DCZIwHWBvfNQ0hCltw9InPACdB0-aX/exec";
-                        OkHttpClient client = new OkHttpClient();
-
-                        RequestBody requestBody = new MultipartBody.Builder()
-                                .setType(MultipartBody.FORM)
-                                .addFormDataPart("action", "login")
-                                .addFormDataPart("number", "0" + signInEmailNum)
-                                .addFormDataPart("password", signInPassword)
-                                .build();
-                        Request request = new Request.Builder()
-                                .url(url)
-                                .post(requestBody)
-                                .build();
-                        client.newCall(request).enqueue(new Callback() {
-                            @Override
-                            public void onFailure(Call call, IOException e) {
-                                Log.w("failure Response", e);
-                            }
-
-                            @Override
-                            public void onResponse(Call call, Response response) throws IOException {
-                                try {
-                                    String responseText = response.body().string();
-                                    if (responseText.equals("Errors")) {
-
-                                    } else {
-                                        runOnUiThread(new Runnable() {
-                                            public void run() {
-                                                try {
-                                                    JSONObject jsonObject = new JSONObject(responseText);
-                                                    JSONArray cast = jsonObject.getJSONArray("item");
-                                                    for (int i = 0; i < cast.length(); i++) {
-                                                        JSONObject actor = cast.getJSONObject(i);
-
-                                                        String First_Name = actor.getString("First Name");
-                                                        String Middle_Name = actor.getString("Middle Name");
-                                                        String Last_Name = actor.getString("Last Name");
-                                                        String Suffix = actor.getString("Suffix");
-                                                        String Date_of_Birth = actor.getString("Date of Birth");
-                                                        String Sex = actor.getString("Sex");
-                                                        String Contact_Number = actor.getString("Contact Number");
-                                                        String Cellular_Network = actor.getString("Cellular Network");
-                                                        String Address = actor.getString("Address");
-                                                        String Email_Address = actor.getString("Email Address");
-                                                        String Profile_Photo = actor.getString("Profile Photo");
-                                                        Toast.makeText(MainActivity.this, First_Name + Middle_Name + Last_Name + Suffix + Date_of_Birth, Toast.LENGTH_SHORT).show();
-                                                        SharedPreferences clientPref = getSharedPreferences("Client", MODE_PRIVATE);
-                                                        SharedPreferences.Editor editing = clientPref.edit();
-                                                        editing.putString("First_Name", First_Name);
-                                                        editing.putString("Middle_Name", Middle_Name);
-                                                        editing.putString("Last_Name", Last_Name);
-                                                        editing.putString("Suffix", Suffix);
-                                                        editing.putString("Date_of_Birth", Date_of_Birth);
-                                                        editing.putString("Sex", Sex);
-                                                        editing.putString("Contact_Number", Contact_Number);
-                                                        editing.putString("Cellular_Network", Cellular_Network);
-                                                        editing.putString("Address", Address);
-                                                        editing.putString("Email_Address", Email_Address);
-                                                        editing.putString("Profile_Photo", Profile_Photo);
-
-
-
-
-                                                        Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(Profile_Photo).getContent());
-                                                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                                                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                                                        byte[] byteArray = byteArrayOutputStream.toByteArray();
-                                                        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-                                                        editing.putString("Base64_Photo", encoded);
-
-                                                        Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-                                                        editing.apply();
-                                                        SharedPreferences LoggedPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
-                                                        SharedPreferences.Editor LoggedEdit = LoggedPref.edit();
-                                                        LoggedEdit.putString("LoseNumber","88789");
-                                                        LoggedEdit.apply();
-
-                                                        Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
-                                                        startActivity(intent);
-
-
-                                                    }
-                                                } catch (JSONException e) {
-
-                                                } catch (MalformedURLException e) {
-                                                    e.printStackTrace();
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        });
-
-                                    }
-
-
-                                } catch (NullPointerException e) {
-                                    Log.e("Error", String.valueOf(e));
-                                }
-                            }
-                        });
-                    } catch (RuntimeException e) {
-                        Log.e("Error", String.valueOf(e));
-                    }
+                    PostData();
                 }
             });
 
@@ -202,6 +177,125 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void PostData(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        try {
+            String signInEmailNum = emailNum.getText().toString();
+            String signInPassword = password.getText().toString();
+            //postRequest(emailNum.getText().toString(),password.getText().toString());
+            String url = "https://script.google.com/macros/s/AKfycby-EJdFayXO07cWGBIHukZx8xQSNgPbdJlJe3DCZIwHWBvfNQ0hCltw9InPACdB0-aX/exec";
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("action", "login")
+                    .addFormDataPart("number", "0" + signInEmailNum)
+                    .addFormDataPart("password", signInPassword)
+                    .build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.w("failure Response", e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    try {
+                        String responseText = response.body().string();
+                        if (responseText.equals("Errors")) {
+
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(responseText);
+                                        JSONArray cast = jsonObject.getJSONArray("item");
+                                        for (int i = 0; i < cast.length(); i++) {
+                                            JSONObject actor = cast.getJSONObject(i);
+
+                                            String First_Name = actor.getString("First Name");
+                                            String Middle_Name = actor.getString("Middle Name");
+                                            String Last_Name = actor.getString("Last Name");
+                                            String Suffix = actor.getString("Suffix");
+                                            String Date_of_Birth = actor.getString("Date of Birth");
+                                            String Sex = actor.getString("Sex");
+                                            String Contact_Number = actor.getString("Contact Number");
+                                            String Cellular_Network = actor.getString("Cellular Network");
+                                            String Address = actor.getString("Address");
+                                            String Email_Address = actor.getString("Email Address");
+                                            String Profile_Photo = actor.getString("Profile Photo");
+                                            Toast.makeText(MainActivity.this, First_Name + Middle_Name + Last_Name + Suffix + Date_of_Birth, Toast.LENGTH_SHORT).show();
+                                            SharedPreferences clientPref = getSharedPreferences("Client", MODE_PRIVATE);
+                                            SharedPreferences.Editor editing = clientPref.edit();
+                                            editing.putString("First_Name", First_Name);
+                                            editing.putString("Middle_Name", Middle_Name);
+                                            editing.putString("Last_Name", Last_Name);
+                                            editing.putString("Suffix", Suffix);
+                                            editing.putString("Date_of_Birth", Date_of_Birth);
+                                            editing.putString("Sex", Sex);
+                                            editing.putString("Contact_Number", Contact_Number);
+                                            editing.putString("Cellular_Network", Cellular_Network);
+                                            editing.putString("Address", Address);
+                                            editing.putString("Email_Address", Email_Address);
+                                            editing.putString("Profile_Photo", Profile_Photo);
+
+
+
+
+                                            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(Profile_Photo).getContent());
+                                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                                            byte[] byteArray = byteArrayOutputStream.toByteArray();
+                                            String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                                            editing.putString("Base64_Photo", encoded);
+
+                                            Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+                                            editing.apply();
+                                            SharedPreferences LoggedPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
+                                            SharedPreferences.Editor LoggedEdit = LoggedPref.edit();
+                                            LoggedEdit.putString("LoseNumber","88789");
+                                            LoggedEdit.apply();
+
+                                            Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
+                                            startActivity(intent);
+
+
+                                        }
+                                    } catch (JSONException e) {
+
+                                    } catch (MalformedURLException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                        }
+
+
+                    } catch (NullPointerException e) {
+                        Log.e("Error", String.valueOf(e));
+                    }
+                }
+            });
+        } catch (RuntimeException e) {
+            Log.e("Error", String.valueOf(e));
+        }
+
+    }
+
 
     public String md5(String s) {
         try {
