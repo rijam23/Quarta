@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
         SharedPreferences checkPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
 
         String number = checkPref.getString("LoseNumber","");
