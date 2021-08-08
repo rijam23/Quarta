@@ -126,7 +126,7 @@
                 android:backgroundTint="@color/green"
                 android:fontFamily="@font/poppinsmedium"
                 android:foregroundGravity="center_horizontal"
-                android:text="Apply Now"
+                android:text="Verify"
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"

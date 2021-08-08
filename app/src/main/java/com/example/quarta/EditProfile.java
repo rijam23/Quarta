@@ -85,8 +85,6 @@ public class EditProfile extends AppCompatActivity {
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-
         dateofbirthh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +99,6 @@ public class EditProfile extends AppCompatActivity {
                     }
                 }, year, month, day);
                 datePickerDialog.show();
-
             }
         });
         applyChanges.setOnClickListener(new View.OnClickListener() {
@@ -180,21 +177,8 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-
+                Toast.makeText(EditProfile.this, responseText, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -12,6 +12,9 @@
         android:roundIcon="@drawable/quartalogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quarta">
+        <activity
+            android:name=".Verification_Activity"
+            android:exported="true" />
         <activity android:name=".EditProfile" />
         <activity android:name=".LoanApplication" />
         <activity android:name=".PaymentHistory" />

@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -41,11 +43,12 @@ public class HomeDashBoard extends AppCompatActivity {
     ImageView loanHistory;
     String number;
     String CLientID;
-    TextView greetings,nameGreet;
+    TextView greetings, nameGreet;
+    Handler mHandler = new Handler();
+
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
 
         if (pressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
@@ -56,7 +59,7 @@ public class HomeDashBoard extends AppCompatActivity {
         pressedTime = System.currentTimeMillis();
 
     }
- 
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,66 +68,61 @@ public class HomeDashBoard extends AppCompatActivity {
 /////////////////////Transparent Status Bar//////////////////////////////////////////////////////
         //getSupportActionBar().hide();//its hide actionbar
 
-        if (Build.VERSION.SDK_INT>=19 && Build.VERSION.SDK_INT<21){
+
+        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowsFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
         }
-        if (Build.VERSION.SDK_INT>=19){
+        if (Build.VERSION.SDK_INT >= 19) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-        if (Build.VERSION.SDK_INT>=21)
-        {
+        if (Build.VERSION.SDK_INT >= 21) {
             setWindowsFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-        greetings = (TextView)findViewById(R.id.greet);
+        greetings = (TextView) findViewById(R.id.greet);
 
         Calendar kalendaryo = Calendar.getInstance();
 
         int james = kalendaryo.get(Calendar.HOUR_OF_DAY);
 
-        if(james >= 0 && james < 12) {
+        if (james >= 0 && james < 12) {
             greetings.setText("Magandang Araw,");
-        }
-        else if(james >= 12 && james < 17) {
+        } else if (james >= 12 && james < 17) {
             greetings.setText("Magandang Hapon,");
-        }
-        else if(james >= 17 && james < 24) {
+        } else if (james >= 17 && james < 24) {
             greetings.setText("Magandang Gabi,");
-        }
-        else{
+        } else {
             greetings.setText("Kamusta ka,");
         }
-
-
-
-
-
 
 
         SharedPreferences sh = getSharedPreferences("Client", MODE_PRIVATE);
 
         number = sh.getString("Contact_Number", "");
         nameGreet = findViewById(R.id.namegreet);
-        nameGreet.setText(sh.getString("First_Name",""));
+        nameGreet.setText(sh.getString("First_Name", ""));
 
         Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
         getClientId(number);
         Toast.makeText(this, CLientID, Toast.LENGTH_SHORT).show();
         paymentHistory = findViewById(R.id.paymenthistoryIcon);
+        paymentHistory.setEnabled(false);
         paymentHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(HomeDashBoard.this, PaymentHistory.class);
-                intent.putExtra("clientID",CLientID);
+                intent.putExtra("clientID", CLientID);
                 startActivity(intent);
             }
         });
 
 
         loanHistory = findViewById(R.id.loanHistory);
+        loanHistory.setEnabled(false);
+
         loanHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,11 +131,21 @@ public class HomeDashBoard extends AppCompatActivity {
             }
         });
         applyLoan = findViewById(R.id.applybutton);
+        applyLoan.setEnabled(false);
         applyLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeDashBoard.this, LoanApplication.class);
-                startActivity(intent);
+
+                String btnStatus = applyLoan.getText().toString();
+                if(btnStatus.equals("Apply Now")){
+                    Intent intent = new Intent(HomeDashBoard.this, LoanApplication.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent2 = new Intent(HomeDashBoard.this,Verification_Activity.class);
+                    startActivity(intent2);
+                }
+
             }
         });
 
@@ -151,15 +159,15 @@ public class HomeDashBoard extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.profileicon:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.moneytalksicon:
-                        startActivity(new Intent(getApplicationContext(),QuarTalk.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), QuarTalk.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
 
@@ -169,13 +177,13 @@ public class HomeDashBoard extends AppCompatActivity {
         });
 
     }
-////Transparent Status Bar
-    private static void setWindowsFlag(Activity activity, final  int Bits, Boolean on)
-    {
+
+    ////Transparent Status Bar
+    private static void setWindowsFlag(Activity activity, final int Bits, Boolean on) {
         Window win = activity.getWindow();
         WindowManager.LayoutParams Winparams = win.getAttributes();
-        if (on){
-            Winparams.flags |=Bits;
+        if (on) {
+            Winparams.flags |= Bits;
         } else {
             Winparams.flags &= ~Bits;
         }
@@ -184,18 +192,16 @@ public class HomeDashBoard extends AppCompatActivity {
     ////Transparent Status Bar
 
 
-
-
-    public void getClientId(String number){
+    public void getClientId(String number) {
         final String[] toReturn = {""};
         String url = "https://script.google.com/macros/s/AKfycbzbZcIYHAsNQdjs3uyUTvNL1O6kamME2N474zQEiBSXXnpiiOUvNtuDAWlrYz18DENX/exec";
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("action","fetchData")
-                .addFormDataPart("number",number)
-                .addFormDataPart("data","Client ID")
+                .addFormDataPart("action", "fetchData")
+                .addFormDataPart("number", number)
+                .addFormDataPart("data", "Client ID")
                 .build();
 
         Request request = new Request.Builder()
@@ -222,10 +228,74 @@ public class HomeDashBoard extends AppCompatActivity {
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 myEdit.putString("clientID", CLientID);
                 myEdit.apply();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loanHistory.setEnabled(true);
+                        paymentHistory.setEnabled(true);
+                        mHandler.postDelayed(runnable, 200);
+                    }
+                });
+
 
             }
         });
 
+    }
+
+    private final Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            SharedPreferences sharedPreferences = getSharedPreferences("Client", MODE_PRIVATE);
+            String num = sharedPreferences.getString("Contact_Number","");
+
+
+            String url = "https://script.google.com/macros/s/AKfycby2U3gdIg44mgFIQD8bQKJPOEPPCNeU66TPHD9meQCwQb6s0r2MDhsvQDjH3tfH6Ais/exec";
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("action", "getStatus")
+                    .addFormDataPart("number", num)
+
+                    .build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.w("failure Response", e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseText = response.body().string();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(responseText.equals("Verified")){
+                                applyLoan.setText("Apply Loan");
+                                applyLoan.setEnabled(true);
+                            }
+                            else{
+                                applyLoan.setText("Verify");
+                            }
+                            Toast.makeText(HomeDashBoard.this, responseText, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            });
+
+            //Toast.makeText(HomeDashBoard.this, "", Toast.LENGTH_SHORT).show();
+            mHandler.postDelayed(runnable, 20000);
+        }
+
     };
+
+
 }
 

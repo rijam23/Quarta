@@ -68,10 +68,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences checkPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
 
         String number = checkPref.getString("LoseNumber","");
-        if(number.equals("88789")){
+        if (number.equals("88789")){
             ///
             // creating a variable for our BiometricManager
             // and lets check if our user can use biometric sensor or not
+            SharedPreferences sf = getSharedPreferences("Client",MODE_PRIVATE);
+            String cNUm = sf.getString("Contact_Number","");
+            Toast.makeText(MainActivity.this, cNUm.substring(1), Toast.LENGTH_SHORT).show();
+            emailNum.setText(cNUm.substring(1));
+
             BiometricManager biometricManager = androidx.biometric.BiometricManager.from(this);
             switch (biometricManager.canAuthenticate()) {
 
@@ -138,12 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-            signin_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PostData();
-                }
-            });
 
             ///
             /*Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
@@ -165,16 +164,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            signin_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    PostData();
-                }
-            });
-
 
         }
-
+        signin_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostData();
+            }
+        });
 
     }
     public void PostData(){
@@ -183,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String signInEmailNum = emailNum.getText().toString();
             String signInPassword = password.getText().toString();
-            //postRequest(emailNum.getText().toString(),password.getText().toString());
+
             String url = "https://script.google.com/macros/s/AKfycby-EJdFayXO07cWGBIHukZx8xQSNgPbdJlJe3DCZIwHWBvfNQ0hCltw9InPACdB0-aX/exec";
             OkHttpClient client = new OkHttpClient();
 
@@ -244,9 +241,6 @@ public class MainActivity extends AppCompatActivity {
                                             editing.putString("Email_Address", Email_Address);
                                             editing.putString("Profile_Photo", Profile_Photo);
 
-
-
-
                                             Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(Profile_Photo).getContent());
                                             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                                             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -255,11 +249,6 @@ public class MainActivity extends AppCompatActivity {
                                             editing.putString("Base64_Photo", encoded);
 
                                             Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
-
-
-
-
-
 
                                             editing.apply();
                                             SharedPreferences LoggedPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
