@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     //msgtex.setText("This device doesnot have a fingerprint sensor");
                     //loginbutton.setVisibility(View.GONE);
                     break;
+
                 //msgtex.setText("The biometric sensor is currently unavailable");
                     //loginbutton.setVisibility(View.GONE);
 
