@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textsignup;
     EditText emailNum;
     EditText password;
+    ConstraintLayout loadingScr;
 
 
     @Override
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        loadingScr = findViewById(R.id.loading);
+        loadingScr.setVisibility(View.GONE);
         signin_button = findViewById(R.id.signinbutton);
         signin_button2 = findViewById(R.id.signinbutton2);
         textsignup = findViewById(R.id.signupactbutton);
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                     super.onAuthenticationSucceeded(result);
+                    loadingScr.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
                     Intent intent2 = new Intent(MainActivity.this, HomeDashBoard.class);
                     startActivity(intent2);
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             signin_button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    loadingScr.setVisibility(View.VISIBLE);
                     biometricPrompt.authenticate(promptInfo);
 
                 }
@@ -169,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         signin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loadingScr.setVisibility(View.VISIBLE);
                 PostData();
             }
         });
@@ -255,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                             SharedPreferences.Editor LoggedEdit = LoggedPref.edit();
                                             LoggedEdit.putString("LoseNumber","88789");
                                             LoggedEdit.apply();
-
+                                            loadingScr.setVisibility(View.GONE);
                                             Intent intent = new Intent(MainActivity.this, HomeDashBoard.class);
                                             startActivity(intent);
 
