@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // this means we can use biometric sensor
                 case BiometricManager.BIOMETRIC_SUCCESS:
+                    loadingScr.setVisibility(View.GONE);
                     //signin_button.setText("Log In with Fingerprint");
                    //msgtex.setText("You can use the fingerprint sensor to login");
                     //msgtex.setTextColor(Color.parseColor("#fafafa"));
@@ -93,20 +94,20 @@ public class MainActivity extends AppCompatActivity {
 
                 // this means that the device doesn't have fingerprint sensor
                 case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+
+                    // this means that biometric sensor is not available
+                case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
                     signin_button2.setVisibility(View.GONE);
+                    loadingScr.setVisibility(View.GONE);
                     //msgtex.setText("This device doesnot have a fingerprint sensor");
                     //loginbutton.setVisibility(View.GONE);
                     break;
-
-                // this means that biometric sensor is not available
-                case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                    signin_button2.setVisibility(View.GONE);
-                    //msgtex.setText("The biometric sensor is currently unavailable");
+                //msgtex.setText("The biometric sensor is currently unavailable");
                     //loginbutton.setVisibility(View.GONE);
-                    break;
 
                 // this means that the device doesn't contain your fingerprint
                 case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                    loadingScr.setVisibility(View.GONE);
                     signin_button2.setVisibility(View.GONE);
                     //msgtex.setText("Your device doesn't have fingerprint saved,please check your security settings");
                     //loginbutton.setVisibility(View.GONE);
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                     super.onAuthenticationError(errorCode, errString);
+                    loadingScr.setVisibility(View.GONE);
                 }
 
                 // THIS METHOD IS CALLED WHEN AUTHENTICATION IS SUCCESS
@@ -134,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAuthenticationFailed() {
                     super.onAuthenticationFailed();
+                    loadingScr.setVisibility(View.GONE);
                 }
             });
             // creating a variable for our promptInfo
