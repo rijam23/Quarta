@@ -137,7 +137,7 @@ public class HomeDashBoard extends AppCompatActivity {
             public void onClick(View view) {
 
                 String btnStatus = applyLoan.getText().toString();
-                if(btnStatus.equals("Apply Now")){
+                if(btnStatus.equals("Apply Loan")){
                     Intent intent = new Intent(HomeDashBoard.this, LoanApplication.class);
                     startActivity(intent);
                 }
@@ -246,17 +246,17 @@ public class HomeDashBoard extends AppCompatActivity {
     private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            SharedPreferences sharedPreferences = getSharedPreferences("Client", MODE_PRIVATE);
-            String num = sharedPreferences.getString("Contact_Number","");
+            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+            String clientid = sharedPreferences.getString("clientID","");
 
 
-            String url = "https://script.google.com/macros/s/AKfycby2U3gdIg44mgFIQD8bQKJPOEPPCNeU66TPHD9meQCwQb6s0r2MDhsvQDjH3tfH6Ais/exec";
+            String url = "https://script.google.com/macros/s/AKfycbyFI_-MDSf0rgLBAQ37dEPQUaZGnddsuZSX-JN8mNBYR3juzMpcgy8UjYLlx83k3EDN/exec";
             OkHttpClient client = new OkHttpClient();
 
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
                     .addFormDataPart("action", "getStatus")
-                    .addFormDataPart("number", num)
+                    .addFormDataPart("clientId", clientid)
 
                     .build();
             Request request = new Request.Builder()
@@ -281,6 +281,7 @@ public class HomeDashBoard extends AppCompatActivity {
                             }
                             else{
                                 applyLoan.setText("Verify");
+                                applyLoan.setEnabled(true);
                             }
                             Toast.makeText(HomeDashBoard.this, responseText, Toast.LENGTH_SHORT).show();
 
