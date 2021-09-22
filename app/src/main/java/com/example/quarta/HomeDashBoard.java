@@ -41,6 +41,7 @@ public class HomeDashBoard extends AppCompatActivity {
     Button applyLoan;
     ImageView paymentHistory;
     ImageView loanHistory;
+    ImageView loanCalcu;
     String number;
     String CLientID;
     TextView greetings, nameGreet;
@@ -115,6 +116,16 @@ public class HomeDashBoard extends AppCompatActivity {
 
                 Intent intent = new Intent(HomeDashBoard.this, PaymentHistory.class);
                 intent.putExtra("clientID", CLientID);
+                startActivity(intent);
+            }
+        });
+
+        loanCalcu = findViewById(R.id.loancalcubutton);
+
+        loanCalcu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeDashBoard.this, Loan_CalcuActivity.class);
                 startActivity(intent);
             }
         });

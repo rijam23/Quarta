@@ -3,6 +3,7 @@ package com.example.quarta;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,6 +48,7 @@ public class Profile extends AppCompatActivity {
     TextView numberTv;
     String number;
     CircleImageView clientImage;
+    CardView cardlogout;
 
     TextView logoutTxt;
 
@@ -60,6 +62,7 @@ public class Profile extends AppCompatActivity {
                 new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(gfgPolicy);
         fullNameTv = findViewById(R.id.fullname);
+        cardlogout = findViewById(R.id.card4);
         numberTv = findViewById(R.id.contactNumber);
         SharedPreferences getShared = getSharedPreferences("Client", MODE_PRIVATE);
         fullNameTv.setText(getShared.getString("First_Name","")+" "+getShared.getString("Middle_Name","")+" "+getShared.getString("Last_Name",""));
@@ -115,7 +118,8 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        logoutTxt.setOnClickListener(new View.OnClickListener() {
+        cardlogout
+                .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences logOutPref2 = getSharedPreferences("IsLogged",MODE_PRIVATE);

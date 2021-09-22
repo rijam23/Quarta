@@ -274,7 +274,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/alingmarites" />
+                            android:src="@drawable/marites1" />
 
 
                     </androidx.cardview.widget.CardView>
@@ -295,7 +295,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/lolasayong" />
+                            android:src="@drawable/lolasayong1" />
 
 
                     </androidx.cardview.widget.CardView>
@@ -316,7 +316,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/mangjose" />
+                            android:src="@drawable/mangjose1" />
 
 
                     </androidx.cardview.widget.CardView>
