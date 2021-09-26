@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quarta">
         <activity
+            android:name=".Billing"
+            android:exported="true" />
+        <activity
             android:name=".Loan_CalcuActivity"
             android:exported="true" />
         <activity

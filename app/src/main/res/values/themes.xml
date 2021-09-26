@@ -16,13 +16,19 @@
 
     </style>
 
-<style name="BaseAppTheme" >
+    <style name="BaseAppTheme">
 
 
+    </style>
 
+    <style name="Theme.Quarta.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-</style>
+    <style name="Theme.Quarta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.Quarta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

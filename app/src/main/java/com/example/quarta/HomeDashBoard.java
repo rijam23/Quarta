@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,7 +70,7 @@ public class HomeDashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_home_dash_board);
 /////////////////////Transparent Status Bar//////////////////////////////////////////////////////
         //getSupportActionBar().hide();//its hide actionbar
-
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.login_anim);
 
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowsFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
@@ -105,9 +107,9 @@ public class HomeDashBoard extends AppCompatActivity {
         nameGreet = findViewById(R.id.namegreet);
         nameGreet.setText(sh.getString("First_Name", ""));
 
-        Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
         getClientId(number);
-        Toast.makeText(this, CLientID, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, CLientID, Toast.LENGTH_SHORT).show();
         paymentHistory = findViewById(R.id.paymenthistoryIcon);
         paymentHistory.setEnabled(false);
         paymentHistory.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +152,10 @@ public class HomeDashBoard extends AppCompatActivity {
                 String btnStatus = applyLoan.getText().toString();
                 if(btnStatus.equals("Apply Loan")){
                     Intent intent = new Intent(HomeDashBoard.this, LoanApplication.class);
+                    startActivity(intent);
+                }
+                else if(btnStatus.equals("PAY")){
+                    Intent intent = new Intent(HomeDashBoard.this, Billing.class);
                     startActivity(intent);
                 }
                 else{
@@ -244,7 +250,8 @@ public class HomeDashBoard extends AppCompatActivity {
                     public void run() {
                         loanHistory.setEnabled(true);
                         paymentHistory.setEnabled(true);
-                        mHandler.postDelayed(runnable, 200);
+                        mHandler.postDelayed(runnable, 2000);
+
                     }
                 });
 
@@ -288,26 +295,69 @@ public class HomeDashBoard extends AppCompatActivity {
                         public void run() {
                             if(responseText.equals("Verified")){
                                 applyLoan.setText("Apply Loan");
-                                applyLoan.setEnabled(true);
+                                //applyLoan.setEnabled(true);
                             }
                             else{
                                 applyLoan.setText("Verify");
-                                applyLoan.setEnabled(true);
+                                //applyLoan.setEnabled(true);
                             }
-                            Toast.makeText(HomeDashBoard.this, responseText, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(HomeDashBoard.this, responseText, Toast.LENGTH_SHORT).show();
 
                         }
                     });
-
                 }
             });
-
+            mHandler.postDelayed(getLoanStatus, 2000);
             //Toast.makeText(HomeDashBoard.this, "", Toast.LENGTH_SHORT).show();
-            mHandler.postDelayed(runnable, 20000);
+            //mHandler.postDelayed(runnable, 20000);
         }
 
     };
+    private final Runnable getLoanStatus = new Runnable() {
+        @Override
+        public void run() {
+            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+            String clientid = sharedPreferences.getString("clientID","");
 
 
+            String url = "https://script.google.com/macros/s/AKfycbzU6o1XqM9rmK3tPn8zltoC25Ty5HReAkrhvJxzIg1KX2WjkSaCD12BF-00F-GuOGCH/exec";
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("action", "checkLoanStatus")
+                    .addFormDataPart("clientId", clientid)
+
+                    .build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.w("failure Response", e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseText = response.body().string();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(responseText.equals("PAY")){
+                                applyLoan.setText("PAY");
+                            }
+                            applyLoan.setEnabled(true);
+                            //Toast.makeText(HomeDashBoard.this, responseText, Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+            });
+            //Toast.makeText(HomeDashBoard.this, "", Toast.LENGTH_SHORT).show();
+            mHandler.postDelayed(getLoanStatus, 20000);
+        }
+
+    };
 }
-

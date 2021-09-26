@@ -11,6 +11,8 @@ import android.os.StrictMode;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,13 +55,14 @@ public class MainActivity extends AppCompatActivity {
     EditText emailNum;
     EditText password;
     ConstraintLayout loadingScr;
-
+    ConstraintLayout v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        v = findViewById(R.id.constraintMain);
         loadingScr = findViewById(R.id.loading);
         loadingScr.setVisibility(View.GONE);
         signin_button = findViewById(R.id.signinbutton);
@@ -67,7 +70,13 @@ public class MainActivity extends AppCompatActivity {
         textsignup = findViewById(R.id.signupactbutton);
         emailNum = findViewById(R.id.loginmobiletext);
         password = findViewById(R.id.loginpasstext);
-
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.login_anim);
+        /*signin_button.startAnimation(animation);
+        signin_button2.startAnimation(animation);
+        textsignup.startAnimation(animation);
+        emailNum.startAnimation(animation);
+        password.startAnimation(animation);*/
+        v.startAnimation(animation);
 
         SharedPreferences checkPref = getSharedPreferences("IsLogged",MODE_PRIVATE);
 
@@ -88,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 case BiometricManager.BIOMETRIC_SUCCESS:
                     loadingScr.setVisibility(View.GONE);
                     //signin_button.setText("Log In with Fingerprint");
-                   //msgtex.setText("You can use the fingerprint sensor to login");
+                    //msgtex.setText("You can use the fingerprint sensor to login");
                     //msgtex.setTextColor(Color.parseColor("#fafafa"));
                     break;
 
@@ -191,11 +200,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             String signInEmailNum = emailNum.getText().toString();
             String signInPassword = password.getText().toString();
-
-
             String url = "https://script.google.com/macros/s/AKfycby-EJdFayXO07cWGBIHukZx8xQSNgPbdJlJe3DCZIwHWBvfNQ0hCltw9InPACdB0-aX/exec";
             OkHttpClient client = new OkHttpClient();
-
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
                     .addFormDataPart("action", "login")
@@ -217,7 +223,8 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String responseText = response.body().string();
                         if (responseText.equals("Errors")) {
-
+                            loadingScr.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Error Login", Toast.LENGTH_SHORT).show();
                         } else {
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -260,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                                             String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                                             editing.putString("Base64_Photo", encoded);
 
-                                            Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(MainActivity.this, "Thrededdddddddddd", Toast.LENGTH_SHORT).show();
 
                                             editing.apply();
                                             SharedPreferences LoggedPref = getSharedPreferences("IsLogged",MODE_PRIVATE);

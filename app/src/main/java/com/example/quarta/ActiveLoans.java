@@ -40,8 +40,8 @@ public class ActiveLoans extends AppCompatActivity {
         newLayout = findViewById(R.id.utangslayout);
         SharedPreferences sf = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         String clientID = sf.getString("clientID", "");
-        Toast.makeText(this, clientID, Toast.LENGTH_SHORT).show();
-        Toast.makeText(ActiveLoans.this, "hello", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, clientID, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ActiveLoans.this, "Loading", Toast.LENGTH_SHORT).show();
         String url = "https://script.google.com/macros/s/AKfycbxJH_ts5JKQmF6kXmolDkVwj90Ak_NFa0_nkqf7-5AGv6axDcvREkez123Vn73wLStM/exec";
 
         OkHttpClient client = new OkHttpClient();
